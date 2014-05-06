@@ -1,0 +1,31 @@
+[user] 
+    name = Kazuhiro Oinuma
+    email = oinume@gmail.com
+[color]
+    ui = auto
+[core] 
+    autocrlf = false
+    excludesfile = /Users/kazuhiro/.gitignore_global
+[alias]
+    amend     = commit --amend -a
+    br = branch
+    co = checkout
+    ci = commit
+    di = diff
+    ds = diff --staged
+    fetch-all = fetch -v --all
+    log-fancy = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --date=relative
+    log-me    = !UN=$(git config user.name)&& git log --author="\"$UN\"" --pretty=format:'%h %cd %s' --date=short
+    log-nice  = log --graph --decorate --pretty=oneline --abbrev-commit
+    st = status
+#    panic     = !tar cvf ../git_panic.tar *
+    wdiff     = diff --word-diff=plain
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[push]
+	default = simple

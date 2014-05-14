@@ -6,6 +6,7 @@
 [core] 
     autocrlf = false
     excludesfile = /Users/kazuhiro/.gitignore_global
+    editor = vim -c \"set fenc=utf-8\"
 [alias]
     amend     = commit --amend -a
     br = branch

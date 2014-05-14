@@ -34,12 +34,19 @@ if [ -d "$NVM_DIR" ]; then
     source $NVM_DIR/nvm.sh
 fi
 
+# MySQL
+if [ -d /usr/local/mysql ]; then
+    _PATH=/usr/local/mysql/bin:$_PATH
+    export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_FALLBACK_LIBRARY_PATH
+fi
+
 # Java
 if [ -d /usr/local/java ]; then
     export JAVA_HOME=/usr/local/java
     _PATH=$_PATH:$JAVA_HOME/bin
 fi
-
+export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
+export MAVEN_OPTS="-Xms512m -Xmx512m -Xmn256m -XX:MaxPermSize=384m -XX:PermSize=384m"
 
 # PATH
 if [ -n "$_PATH" ]; then

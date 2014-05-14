@@ -34,6 +34,14 @@ if [ -d "$NVM_DIR" ]; then
     source $NVM_DIR/nvm.sh
 fi
 
+# Java
+if [ -d /usr/local/java ]; then
+    export JAVA_HOME=/usr/local/java
+    _PATH=$_PATH:$JAVA_HOME/bin
+fi
+
+
+# PATH
 if [ -n "$_PATH" ]; then
     export PATH="$_PATH:$PATH"
 fi

@@ -68,3 +68,7 @@ if exists percol; then
     zle -N percol_select_history
     bindkey '^R' percol_select_history
 fi
+
+# alias
+alias ahistory='history -E 1'
+

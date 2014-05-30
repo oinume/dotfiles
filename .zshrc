@@ -53,6 +53,12 @@ if [ -n "$_PATH" ]; then
     export PATH="$_PATH:$PATH"
 fi
 
+# zaw
+if [ -f ~/zaw/zaw.zsh ]; then
+    . ~/zaw/zaw.zsh
+    bindkey '^xb' zaw
+fi
+
 # percol
 function exists { which $1 &> /dev/null }
 

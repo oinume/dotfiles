@@ -19,6 +19,9 @@ export FTP_PASSIVE_MODE="YES"
 
 _PATH="/usr/local/bin:/usr/local/sbin"
 
+# tmuxinator
+[ -f $HOME/.tmuxinator/tmuxinator.zsh ] && . $HOME/.tmuxinator/tmuxinator.zsh
+
 # homebrew's ruby
 PREFIX_RUBY=`brew --prefix ruby`
 if [ -d "$PREFIX_RUBY/bin" ]; then

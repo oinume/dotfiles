@@ -23,13 +23,17 @@ pre_window: "cd ~/Dropbox/work/starrepo"
 #    - cd server && npm install && cd ../
 windows:
   - typescript:
+      layout: main-vertical
+      panes:
+        - grunt typescript:server
+- foreman:
     layout: main-vertical
     panes:
       - grunt typescript:server
-  - grunt:
-      layout: main-vertical
-      panes:
-        - grunt serve
+  # - grunt:
+  #   layout: main-vertical
+  #   panes:
+  #     - grunt serve
 
 #  - server: bundle exec rails s
 #  - logs: tail -f log/development.log

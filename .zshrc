@@ -19,6 +19,12 @@ export FTP_PASSIVE_MODE="YES"
 
 _PATH=/usr/local/bin:/usr/local/sbin
 
+# homebrew's ruby
+PREFIX_RUBY=`brew --prefix ruby`
+if [ -d "$PREFIX_RUBY/bin" ]; then
+    _PATH="$PREFIX_RUBY/bin":$_PATH
+fi
+
 # pyenv
 if [ -d $HOME/.pyenv ]; then
     #export PYENV_ROOT=$HOME/.pyenv

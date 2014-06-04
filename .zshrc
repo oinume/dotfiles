@@ -17,7 +17,7 @@ export EDITOR="vim"
 export PAGER="less"
 export FTP_PASSIVE_MODE="YES"
 
-_PATH=/usr/local/bin:/usr/local/sbin
+_PATH="/usr/local/bin:/usr/local/sbin"
 
 # homebrew's ruby
 PREFIX_RUBY=`brew --prefix ruby`
@@ -31,13 +31,25 @@ if [ -d $HOME/.pyenv ]; then
     if [ -d /usr/local/opt/pyenv ]; then
         source /usr/local/opt/pyenv/completions/pyenv.zsh
     fi
-    _PATH=$HOME/.pyenv/shims:$_PATH
+fi
+
+# rbenv
+if [ -d $HOME/.rbenv ]; then
+    #export PYENV_ROOT=$HOME/.pyenv
+    if [ -d /usr/local/opt/rbenv ]; then
+        source /usr/local/opt/rbenv/completions/rbenv.zsh
+    fi
 fi
 
 # nvm
 NVM_DIR=`brew --prefix nvm`
 if [ -d "$NVM_DIR" ]; then
     source $NVM_DIR/nvm.sh
+fi
+
+# nodebrew
+if [ -d "$HOME/.nodebrew" ]; then
+    _PATH=$HOME/.nodebrew/current/bin:$_PATH
 fi
 
 # MySQL
@@ -83,4 +95,3 @@ fi
 
 # alias
 alias ahistory='history -E 1'
-

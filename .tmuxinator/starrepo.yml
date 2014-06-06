@@ -1,5 +1,5 @@
 name: starrepo
-root: ~/
+root: ~/Dropbox/work/starrepo
 
 # Optional tmux socket
 # socket_name: foo
@@ -16,24 +16,20 @@ root: ~/
 # Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
 # tmux_command: byobu
 
-pre_window: "cd ~/Dropbox/work/starrepo"
+#pre_window: "cd ~/Dropbox/work/starrepo"
 # pre:
 #     - "cd ~/Dropbox/work/starrepo"
 #    - npm install
 #    - cd server && npm install && cd ../
 windows:
-  - typescript:
+  - foreman:
       layout: main-vertical
       panes:
-        - grunt typescript:server
-- foreman:
-    layout: main-vertical
-    panes:
-      - grunt typescript:server
+          - nf start
   # - grunt:
   #   layout: main-vertical
   #   panes:
   #     - grunt serve
-
+  #
 #  - server: bundle exec rails s
 #  - logs: tail -f log/development.log

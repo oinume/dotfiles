@@ -17,6 +17,8 @@ export EDITOR="vim"
 export PAGER="less"
 export FTP_PASSIVE_MODE="YES"
 
+unsetopt correct
+
 _PATH="/usr/local/bin:/usr/local/sbin"
 
 # homebrew's ruby
@@ -55,7 +57,7 @@ fi
 # MySQL
 if [ -d /usr/local/mysql ]; then
     _PATH=/usr/local/mysql/bin:$_PATH
-    export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_FALLBACK_LIBRARY_PATH
+    #export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_FALLBACK_LIBRARY_PATH
 fi
 
 # Java

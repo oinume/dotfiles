@@ -98,3 +98,5 @@ fi
 
 # alias
 alias ahistory='history -E 1'
+alias vag='vagrant'
+

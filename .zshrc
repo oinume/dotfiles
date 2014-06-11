@@ -17,6 +17,13 @@ export EDITOR="vim"
 export PAGER="less"
 export FTP_PASSIVE_MODE="YES"
 
+# zsh options
+unsetopt correct
+
+# alias
+alias ahistory='history -E 1'
+alias vag='vagrant'
+
 _PATH="/usr/local/bin:/usr/local/sbin"
 
 # tmuxinator
@@ -58,7 +65,7 @@ fi
 # MySQL
 if [ -d /usr/local/mysql ]; then
     _PATH=/usr/local/mysql/bin:$_PATH
-    export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_FALLBACK_LIBRARY_PATH
+    #export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_FALLBACK_LIBRARY_PATH
 fi
 
 # Java
@@ -75,9 +82,22 @@ if [ -n "$_PATH" ]; then
 fi
 
 # zaw
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':chpwd:*' recent-dirs-max 100 # cdrの履歴を保存する個数
+zstyle ':chpwd:*' recent-dirs-default yes
+zstyle ':completion:*' recent-dirs-insert both
+zstyle ':filter-select:highlight' selected fg=cyan,bg=white,standout
+zstyle ':filter-select' case-insensitive yes
+
 if [ -f ~/zaw/zaw.zsh ]; then
     . ~/zaw/zaw.zsh
     bindkey '^xb' zaw
+    bindkey '^@' zaw-cdr
+    bindkey '^xa' zaw-ack
+    bindkey '^xb' zaw-git-branches
+    bindkey '^xt' zaw-tmux
+    bindkey '^xs' zaw-ssh-hosts
 fi
 
 # percol
@@ -96,7 +116,16 @@ if exists percol; then
     bindkey '^R' percol_select_history
 fi
 
-# alias
-alias ahistory='history -E 1'
-alias vag='vagrant'
+function git_author_ca() {
+    export GIT_AUTHOR_NAME="oinuma-kazuhiro"
+    export GIT_AUTHOR_EMAIL="oinuma_kazuhiro@cyberagent.co.jp"
+    export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
+    export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
+}
 
+function git_author_private() {
+    export GIT_AUTHOR_NAME="oinume"
+    export GIT_AUTHOR_EMAIL="oinume@gmail.com"
+    export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
+    export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
+}

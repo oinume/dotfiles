@@ -17,7 +17,12 @@ export EDITOR="vim"
 export PAGER="less"
 export FTP_PASSIVE_MODE="YES"
 
+# zsh options
 unsetopt correct
+
+# alias
+alias ahistory='history -E 1'
+
 
 _PATH="/usr/local/bin:/usr/local/sbin"
 
@@ -98,5 +103,16 @@ if exists percol; then
     bindkey '^R' percol_select_history
 fi
 
-# alias
-alias ahistory='history -E 1'
+function git_author_ca() {
+    export GIT_AUTHOR_NAME="oinuma-kazuhiro"
+    export GIT_AUTHOR_EMAIL="oinuma_kazuhiro@cyberagent.co.jp"
+    export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
+    export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
+}
+
+function git_author_private() {
+    export GIT_AUTHOR_NAME="oinume"
+    export GIT_AUTHOR_EMAIL="oinume@gmail.com"
+    export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
+    export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
+}

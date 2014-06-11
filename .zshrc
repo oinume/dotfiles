@@ -87,16 +87,17 @@ add-zsh-hook chpwd chpwd_recent_dirs
 zstyle ':chpwd:*' recent-dirs-max 100 # cdrの履歴を保存する個数
 zstyle ':chpwd:*' recent-dirs-default yes
 zstyle ':completion:*' recent-dirs-insert both
-zstyle ':filter-select:highlight' selected fg=black,bg=white,standout
+zstyle ':filter-select:highlight' selected fg=cyan,bg=white,standout
 zstyle ':filter-select' case-insensitive yes
 
 if [ -f ~/zaw/zaw.zsh ]; then
     . ~/zaw/zaw.zsh
     bindkey '^xb' zaw
     bindkey '^@' zaw-cdr
-    bindkey '^xA' zaw-ack
-    bindkey '^xB' zaw-git-branches
-    bindkey '^xT' zaw-tmux
+    bindkey '^xa' zaw-ack
+    bindkey '^xb' zaw-git-branches
+    bindkey '^xt' zaw-tmux
+    bindkey '^xs' zaw-ssh-hosts
 fi
 
 # percol

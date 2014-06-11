@@ -82,9 +82,21 @@ if [ -n "$_PATH" ]; then
 fi
 
 # zaw
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':chpwd:*' recent-dirs-max 100 # cdrの履歴を保存する個数
+zstyle ':chpwd:*' recent-dirs-default yes
+zstyle ':completion:*' recent-dirs-insert both
+zstyle ':filter-select:highlight' selected fg=black,bg=white,standout
+zstyle ':filter-select' case-insensitive yes
+
 if [ -f ~/zaw/zaw.zsh ]; then
     . ~/zaw/zaw.zsh
     bindkey '^xb' zaw
+    bindkey '^@' zaw-cdr
+    bindkey '^xA' zaw-ack
+    bindkey '^xB' zaw-git-branches
+    bindkey '^xT' zaw-tmux
 fi
 
 # percol

@@ -22,7 +22,7 @@ unsetopt correct
 
 # alias
 alias ahistory='history -E 1'
-
+alias vag='vagrant'
 
 _PATH="/usr/local/bin:/usr/local/sbin"
 

@@ -77,9 +77,10 @@ export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
 export MAVEN_OPTS="-Xms512m -Xmx512m -Xmn256m -XX:MaxPermSize=384m -XX:PermSize=384m"
 
 # Go
-if [ -d /usr/local/Cellar/go/1.3 ]; then
-    export GOROOT=/usr/local/Cellar/go/1.3
+if [ -d /usr/local/opt/go/libexec ]; then
+    export GOROOT=/usr/local/opt/go/libexec
     export GOPATH=$HOME/go
+    _PATH=$_PATH:$GOROOT/bin
 fi
 
 # PATH

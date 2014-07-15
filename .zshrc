@@ -76,6 +76,12 @@ fi
 export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
 export MAVEN_OPTS="-Xms512m -Xmx512m -Xmn256m -XX:MaxPermSize=384m -XX:PermSize=384m"
 
+# Go
+if [ -d /usr/local/Cellar/go/1.3 ]; then
+    export GOROOT=/usr/local/Cellar/go/1.3
+    export GOPATH=$HOME/go
+fi
+
 # PATH
 if [ -n "$_PATH" ]; then
     export PATH="$_PATH:$PATH"

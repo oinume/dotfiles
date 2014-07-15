@@ -102,6 +102,7 @@ if [ -f ~/zaw/zaw.zsh ]; then
     bindkey '^@' zaw-cdr
     bindkey '^xa' zaw-ack
     bindkey '^xb' zaw-git-branches
+    bindkey '^xh' zaw-history
     bindkey '^xt' zaw-tmux
     bindkey '^xs' zaw-ssh-hosts
 fi

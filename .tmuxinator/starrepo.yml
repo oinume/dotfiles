@@ -23,13 +23,16 @@ root: ~/Dropbox/work/starrepo
 #    - cd server && npm install && cd ../
 windows:
   - grunt:
-      layout: main-vertical
-      panes:
+    layout: even-vertical
+    panes:
+      - grunt:
         - grunt serve
-  - nodemon:
-      layout: main-vertical
-      panes:
+      - nodemon:
         - nodemon server/server.js
-  
+  - workspace:
+    layout: main-vertical
+    panes:
+      - pwd
+
 #  - server: bundle exec rails s
 #  - logs: tail -f log/development.log

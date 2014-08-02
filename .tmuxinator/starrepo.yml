@@ -23,6 +23,7 @@ root: ~/Dropbox/go/src/starrepo
 #    - cd server && npm install && cd ../
 
 windows:
+<<<<<<< HEAD
   - web:
       layout: even-vertical
       panes:

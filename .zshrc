@@ -73,7 +73,7 @@ if [ -d /usr/local/java ]; then
     export JAVA_HOME=/usr/local/java
     _PATH=$_PATH:$JAVA_HOME/bin
 fi
-export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
+#export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
 export MAVEN_OPTS="-Xms512m -Xmx512m -Xmn256m -XX:MaxPermSize=384m -XX:PermSize=384m"
 
 # Go

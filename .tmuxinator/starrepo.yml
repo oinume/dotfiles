@@ -1,5 +1,5 @@
 name: starrepo
-root: ~/Dropbox/work/starrepo
+root: ~/Dropbox/go/src/starrepo
 
 # Optional tmux socket
 # socket_name: foo
@@ -21,18 +21,24 @@ root: ~/Dropbox/work/starrepo
 #     - "cd ~/Dropbox/work/starrepo"
 #    - npm install
 #    - cd server && npm install && cd ../
-windows:
-  - grunt:
-    layout: even-vertical
-    panes:
-      - grunt:
-        - grunt serve
-      - nodemon:
-        - nodemon server/server.js
-  - workspace:
-    layout: main-vertical
-    panes:
-      - pwd
 
-#  - server: bundle exec rails s
-#  - logs: tail -f log/development.log
+windows:
+<<<<<<< HEAD
+  - web:
+      layout: even-vertical
+      panes:
+        - grunt:
+          - grunt serve
+        - revel:
+          - revel run starrepo/server dev 3000
+  # - vagrant:
+  #     layout: even-vertical
+  #     panes:
+  #       - editor:
+  #         - cd madrid-devops
+  #         - atom
+  #         - vagrant up && vagrant ssh
+  - workspace:
+      layout: main-vertical
+      panes:
+        - pwd

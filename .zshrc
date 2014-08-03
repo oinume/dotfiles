@@ -18,7 +18,7 @@ export PAGER="less"
 export FTP_PASSIVE_MODE="YES"
 
 # zsh options
-unsetopt correct
+unsetopt correct noclobber
 
 # alias
 alias ahistory='history -E 1'

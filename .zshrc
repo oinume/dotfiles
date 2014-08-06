@@ -80,7 +80,7 @@ export MAVEN_OPTS="-Xms512m -Xmx512m -Xmn256m -XX:MaxPermSize=384m -XX:PermSize=
 if [ -d /usr/local/opt/go/libexec ]; then
     export GOROOT=/usr/local/opt/go/libexec
     export GOPATH=$HOME/go
-    _PATH=$_PATH:$GOPATH/bin
+    _PATH=$_PATH:$GOPATH/bin:/usr/local/opt/go/libexec/bin
 fi
 
 # PATH

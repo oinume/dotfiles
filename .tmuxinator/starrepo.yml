@@ -29,7 +29,7 @@ windows:
         - grunt:
           - grunt serve
         - revel:
-          - revel run starrepo/server dev 3000
+          - revel run starrepo/server local 3000
   # - vagrant:
   #     layout: even-vertical
   #     panes:

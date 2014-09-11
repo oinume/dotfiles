@@ -120,8 +120,21 @@ if exists percol; then
         zle -R -c               # refresh
     }
 
-    zle -N percol_select_history
-    bindkey '^R' percol_select_history
+#    zle -N percol_select_history
+#    bindkey '^R' percol_select_history
+fi
+
+if exists peco; then
+    function peco_select_history() {
+        local tac
+        exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
+        BUFFER=$(fc -l -n 1 | eval $tac | peco --query "$LBUFFER")
+        CURSOR=$#BUFFER         # move cursor
+        zle -R -c               # refresh
+    }
+
+    zle -N peco_select_history
+    bindkey '^R' peco_select_history
 fi
 
 function git_author_ca() {

@@ -80,7 +80,7 @@ export MAVEN_OPTS="-Xms512m -Xmx512m -Xmn256m -XX:MaxPermSize=384m -XX:PermSize=
 if [ -d /usr/local/opt/go/libexec ]; then
     export GOROOT=/usr/local/opt/go/libexec
     export GOPATH=$HOME/go
-    _PATH=$_PATH:$GOPATH/bin:/usr/local/opt/go/libexec/bin
+    _PATH=$_PATH:$GOPATH/bin:$GOROOT/bin
 fi
 
 # PATH
@@ -150,3 +150,8 @@ function git_author_private() {
     export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
     export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
 }
+
+if [ -s "${ZDOTDIR:-$HOME}/.zshrc_local" ]; then
+    . "${ZDOTDIR:-$HOME}/.zshrc_local"
+fi
+

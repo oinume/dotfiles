@@ -1,5 +1,5 @@
-name: starrepo
-root: ~/Dropbox/go/src/starrepo
+name: wordreg 
+root: ~/Dropbox/work/wordreg
 
 # Optional tmux socket
 # socket_name: foo
@@ -28,8 +28,9 @@ windows:
       panes:
         - grunt:
           - grunt serve
-        - revel:
-          - revel run starrepo/server local 3000
+        - python:
+          - "cd server && . venv/bin/activate"
+          - gunicorn --log-file - --access-logfile - --reload -b 127.0.0.1:5000 -w 1 wordreg.main:wsgi
   # - vagrant:
   #     layout: even-vertical
   #     panes:
@@ -44,5 +45,4 @@ windows:
   - workspace_server:
       layout: main-vertical
       panes:
-        - cd server
-        - pwd
+        - cd server && . ./venv/bin/activate && pwd

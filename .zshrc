@@ -83,6 +83,10 @@ if [ -d /usr/local/opt/go/libexec ]; then
     _PATH=$_PATH:$GOPATH/bin:$GOROOT/bin
 fi
 
+if [ -s "${ZDOTDIR:-$HOME}/.zshrc_local" ]; then
+    . "${ZDOTDIR:-$HOME}/.zshrc_local"
+fi
+
 # PATH
 if [ -n "$_PATH" ]; then
     export PATH="$_PATH:$PATH"
@@ -137,8 +141,4 @@ function git_author_private() {
     export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
     export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
 }
-
-if [ -s "${ZDOTDIR:-$HOME}/.zshrc_local" ]; then
-    . "${ZDOTDIR:-$HOME}/.zshrc_local"
-fi
 

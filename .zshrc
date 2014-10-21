@@ -24,6 +24,8 @@ unsetopt correct noclobber
 alias ahistory='history -E 1'
 alias vag='vagrant'
 
+ulimit -n 4096
+
 _PATH="/usr/local/bin:/usr/local/sbin"
 
 # tmuxinator

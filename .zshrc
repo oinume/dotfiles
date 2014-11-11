@@ -31,6 +31,9 @@ _PATH="/usr/local/bin:/usr/local/sbin"
 # tmuxinator
 [ -f $HOME/.tmuxinator/tmuxinator.zsh ] && . $HOME/.tmuxinator/tmuxinator.zsh
 
+# homebrew cask
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 # homebrew's ruby
 PREFIX_RUBY=`brew --prefix ruby`
 if [ -d "$PREFIX_RUBY/bin" ]; then
@@ -156,4 +159,3 @@ function git_author_private() {
     export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
     export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
 }
-

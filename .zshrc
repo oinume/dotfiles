@@ -151,6 +151,7 @@ function git_author_ca() {
     export GIT_AUTHOR_EMAIL="oinuma_kazuhiro@cyberagent.co.jp"
     export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
     export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
+    env | grep GIT_
 }
 
 function git_author_private() {
@@ -158,4 +159,5 @@ function git_author_private() {
     export GIT_AUTHOR_EMAIL="oinume@gmail.com"
     export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
     export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
+    env | grep GIT_
 }

@@ -71,6 +71,7 @@ packages=(
     ag
     ctags
     curl
+    fswatch
     nkf
     rmtrash
     tree

@@ -143,7 +143,7 @@ apps=(
 
     intellij-idea
     sourcetree
-
+    sequel-pro
 )
 
 # Install apps to /Applications

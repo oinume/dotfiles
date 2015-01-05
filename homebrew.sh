@@ -71,6 +71,7 @@ packages=(
     ag
     ctags
     curl
+    dtrx
     fswatch
     nkf
     rmtrash
@@ -84,6 +85,8 @@ packages=(
     mercurial
     ngrep
     pstree
+    pv
+    rlwrap
     watch
     osxfuse
     sshfs

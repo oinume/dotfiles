@@ -146,6 +146,7 @@ apps=(
     karabiner
     sketch
     slate
+    xtrafinder
 
     intellij-idea
     sourcetree

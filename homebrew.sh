@@ -141,6 +141,7 @@ apps=(
 
     # etc ...
     appcleaner
+    dropbox
     google-drive
     karabiner
     sketch

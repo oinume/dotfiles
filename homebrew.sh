@@ -139,6 +139,10 @@ apps=(
     virtualbox
     vagrant
 
+    # Java
+    java7
+    java
+
     # etc ...
     appcleaner
     dropbox

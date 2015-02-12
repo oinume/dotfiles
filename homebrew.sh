@@ -51,7 +51,7 @@ packages=(
 
     # Image
     imagemagick
-    graphicksmagick
+    graphicsmagick
 
     # Database
     redis

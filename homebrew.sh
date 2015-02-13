@@ -37,6 +37,7 @@ packages=(
     # Shell
     zsh
     bash
+    peco
 
     # Multiplexe
     tmux

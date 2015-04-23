@@ -148,6 +148,7 @@ apps=(
     appcleaner
     dropbox
     google-drive
+    amazon-cloud-drive
     karabiner
     sketch
     slate

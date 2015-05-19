@@ -17,6 +17,11 @@ export EDITOR="vim"
 export PAGER="less"
 export FTP_PASSIVE_MODE="YES"
 
+# zhs-completions
+if [ -d /usr/local/share/zsh-completions ]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+
 # zsh options
 unsetopt correct noclobber
 

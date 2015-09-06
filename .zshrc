@@ -86,6 +86,7 @@ if [ -d /usr/local/opt/go/libexec ]; then
     export GOROOT=/usr/local/opt/go/libexec
     export GOPATH=$HOME/go
     _PATH=$_PATH:$GOPATH/bin:$GOROOT/bin
+    alias gb=$GOPATH/bin/gb
 fi
 
 if [ -s "${ZDOTDIR:-$HOME}/.zshrc_local" ]; then

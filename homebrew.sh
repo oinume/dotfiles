@@ -36,7 +36,9 @@ packages=(
 
     # Shell
     zsh
+    zsh-completions
     bash
+    peco
 
     # Multiplexe
     tmux
@@ -51,7 +53,7 @@ packages=(
 
     # Image
     imagemagick
-    graphicksmagick
+    graphicsmagick
 
     # Database
     redis
@@ -147,6 +149,7 @@ apps=(
     appcleaner
     dropbox
     google-drive
+    amazon-cloud-drive
     karabiner
     sketch
     slate

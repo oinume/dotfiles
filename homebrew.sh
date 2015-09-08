@@ -126,7 +126,6 @@ apps=(
     alfred
 
     # Browser
-    google-chrome
 
     # Terminal
     iterm2

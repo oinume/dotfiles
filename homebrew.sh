@@ -36,6 +36,7 @@ packages=(
 
     # Shell
     zsh
+    zsh-completions
     bash
     peco
 

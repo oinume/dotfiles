@@ -17,6 +17,11 @@ export EDITOR="vim"
 export PAGER="less"
 export FTP_PASSIVE_MODE="YES"
 
+# zhs-completions
+if [ -d /usr/local/share/zsh-completions ]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+
 # zsh options
 unsetopt correct noclobber
 
@@ -86,6 +91,7 @@ if [ -d /usr/local/opt/go/libexec ]; then
     export GOROOT=/usr/local/opt/go/libexec
     export GOPATH=$HOME/go
     _PATH=$_PATH:$GOPATH/bin:$GOROOT/bin
+    alias gb=$GOPATH/bin/gb
 fi
 
 if [ -s "${ZDOTDIR:-$HOME}/.zshrc_local" ]; then

@@ -155,6 +155,7 @@ apps=(
     xtrafinder
 
     intellij-idea
+    imageoptim
     sourcetree
     sequel-pro
 )

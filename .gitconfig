@@ -32,7 +32,5 @@
 	default = simple
 [credential]
 	helper = osxkeychain
-[hub]
-	host = ghe.ca-tools.org
 [diff]
 	tool = opendiff

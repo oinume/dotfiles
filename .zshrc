@@ -25,6 +25,9 @@ fi
 # zsh options
 unsetopt correct noclobber
 
+# functions
+function exists { which $1 &> /dev/null }
+
 # alias
 alias ahistory='history -E 1'
 alias vag='vagrant'
@@ -129,8 +132,6 @@ if [ -f ~/zaw/zaw.zsh ]; then
 fi
 
 # percol
-function exists { which $1 &> /dev/null }
-
 if exists percol; then
     function percol_select_history() {
         local tac

@@ -36,6 +36,11 @@ _PATH="/usr/local/bin:/usr/local/sbin"
 # tmuxinator
 [ -f $HOME/.tmuxinator/tmuxinator.zsh ] && . $HOME/.tmuxinator/tmuxinator.zsh
 
+# direnv
+if exists direnv; then
+    eval "$(direnv hook zsh)"
+fi
+
 # homebrew cask
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 

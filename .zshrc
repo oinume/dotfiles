@@ -158,6 +158,15 @@ if exists peco; then
     bindkey '^R' peco_select_history
 fi
 
+if [ ! -d "$GOPATH/src/github.com/motemen/gore" ]; then
+    echo "Installing gore"
+    go get -u github.com/motemen/gore
+fi
+if [ ! -d "$GOPATH/src/github.com/constabulary/gb" ]; then
+    echo "Installing gb"
+    go get -u github.com/constabulary/gb/...
+fi
+
 function git_author_ca() {
     export GIT_AUTHOR_NAME="oinuma-kazuhiro"
     export GIT_AUTHOR_EMAIL="oinuma_kazuhiro@cyberagent.co.jp"

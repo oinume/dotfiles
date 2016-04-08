@@ -128,11 +128,7 @@ apps=(
 
     # Browser
 
-    # Terminal
-    iterm2
-
     # Communication
-    hipchat
     slack
     skype
 
@@ -148,16 +144,25 @@ apps=(
     appcleaner
     dropbox
     google-drive
-    amazon-cloud-drive
     karabiner
     sketch
     slate
     xtrafinder
 
+    # development
+    iterm2
     intellij-idea
     imageoptim
     sourcetree
     sequel-pro
+    gyazo
+    charles
+    
+    kindle
+    osxfuse
+    licecap
+    packer
+    vlc
 )
 
 # Install apps to /Applications

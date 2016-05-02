@@ -164,6 +164,7 @@ apps=(
     licecap
     packer
     vlc
+    mitmproxy
 )
 
 # Install apps to /Applications

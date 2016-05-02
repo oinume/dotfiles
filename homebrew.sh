@@ -157,6 +157,7 @@ apps=(
     sequel-pro
     gyazo
     charles
+    mysqlworkbench
     
     kindle
     osxfuse

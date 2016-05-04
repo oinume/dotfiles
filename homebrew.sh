@@ -158,6 +158,7 @@ apps=(
     gyazo
     charles
     mysqlworkbench
+    percona-toolkit
     
     kindle
     osxfuse

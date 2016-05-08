@@ -148,6 +148,7 @@ apps=(
     sketch
     slate
     xtrafinder
+    quitter
 
     # development
     iterm2

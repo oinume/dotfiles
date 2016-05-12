@@ -92,7 +92,6 @@ packages=(
     rlwrap
     watch
     osxfuse
-    sshfs
 
     # Languages
     ruby
@@ -160,7 +159,8 @@ apps=(
     charles
     mysqlworkbench
     percona-toolkit
-    
+    sshfs
+
     kindle
     osxfuse
     licecap

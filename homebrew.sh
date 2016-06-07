@@ -92,6 +92,7 @@ packages=(
     rlwrap
     watch
     osxfuse
+    googler
 
     # Languages
     ruby

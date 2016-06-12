@@ -34,3 +34,5 @@
 	helper = osxkeychain
 [diff]
 	tool = opendiff
+[ghq]
+	root = ~/workspace

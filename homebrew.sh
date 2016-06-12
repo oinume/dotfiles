@@ -39,6 +39,7 @@ packages=(
     zsh-completions
     bash
     peco
+    ghq
 
     # Multiplexe
     tmux

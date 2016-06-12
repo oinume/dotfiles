@@ -31,6 +31,8 @@ function exists { which $1 &> /dev/null }
 # alias
 alias ahistory='history -E 1'
 alias vag='vagrant'
+alias ghql='cd $(ghq root)/$(ghq list | peco)'
+alias ghqb='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
 
 ulimit -n 4096
 

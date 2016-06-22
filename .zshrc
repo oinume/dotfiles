@@ -1,9 +1,6 @@
 #
 # Executes commands at the start of an interactive session.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -33,6 +30,7 @@ alias ahistory='history -E 1'
 alias vag='vagrant'
 alias ghql='cd $(ghq root)/$(ghq list | peco)'
 alias ghqb='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
+alias ghq-go="GHQ_ROOT=$HOME/go/src ghq"
 
 ulimit -n 4096
 

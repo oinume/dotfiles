@@ -2,7 +2,7 @@
 
 set -x
 
-npm set progress=false
+#npm set progress=false
 npm install -g npm@latest
 npm install -g npm-check
 

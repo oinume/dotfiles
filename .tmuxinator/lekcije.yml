@@ -1,5 +1,5 @@
-name: dmm-eikaiwa-fft
-root: ~/go/src/github.com/oinume/dmm-eikaiwa-fft
+name: lekcije
+root: ~/go/src/github.com/oinume/lekcije
 
 # Optional tmux socket
 # socket_name: foo
@@ -29,7 +29,19 @@ windows:
         - npm:
           - pwd
           - npm start
-  - front:
+  - server:
+      layout: even-vertical
+      panes:
+        - goimports:
+          - pwd
+          - ~/dotfiles/bin/goimports.sh github.com/oinume/lekcije/
+        - server:
+          - pwd
+          - reflex -R node_modules -R vendor -r '\.go$' -s make serve
+  # - server:
+  #     layout: main-vertical
+  #     panes:
+  - workspace:
       layout: main-vertical
       panes:
         - workspace:

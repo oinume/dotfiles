@@ -99,7 +99,6 @@ if [ -d /usr/local/opt/go/libexec ]; then
     export GOROOT=/usr/local/opt/go/libexec
     export GOPATH=$HOME/go
     _PATH=$_PATH:$GOPATH/bin:$GOROOT/bin
-    alias gb=$GOPATH/bin/gb
 fi
 
 if [ -s "${ZDOTDIR:-$HOME}/.zshrc_local" ]; then
@@ -161,10 +160,6 @@ fi
 if [ ! -d "$GOPATH/src/github.com/motemen/gore" ]; then
     echo "Installing gore"
     go get -u github.com/motemen/gore
-fi
-if [ ! -d "$GOPATH/src/github.com/constabulary/gb" ]; then
-    echo "Installing gb"
-    go get -u github.com/constabulary/gb/...
 fi
 
 function git_author_ca() {

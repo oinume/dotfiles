@@ -41,6 +41,11 @@ windows:
   # - server:
   #     layout: main-vertical
   #     panes:
+  - mysql:
+      layout: main-vertical
+      panes:
+        - mysql:
+          - mysql -uroot -proot -h $(docker-machine ip default) -P 13306 lekcije
   - workspace:
       layout: main-vertical
       panes:

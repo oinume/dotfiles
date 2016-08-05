@@ -45,7 +45,7 @@ if exists direnv; then
 fi
 
 # homebrew cask
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/opt/homebrew-cask/Caskroom"
 
 # homebrew's ruby
 PREFIX_RUBY=`brew --prefix ruby`

@@ -38,9 +38,12 @@ windows:
         - server:
           - pwd
           - reflex -R node_modules -R vendor -r '\.go$' -s make serve
-  # - server:
-  #     layout: main-vertical
-  #     panes:
+  - docker:
+      layout: main-vertical
+      panes:
+        - docker-compose:
+          - eval $(docker-machine env default)
+          - docker-compose up
   - mysql:
       layout: main-vertical
       panes:

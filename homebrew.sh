@@ -162,6 +162,7 @@ apps=(
     mysqlworkbench
     percona-toolkit
     sshfs
+    shiftit
 
     kindle
     osxfuse

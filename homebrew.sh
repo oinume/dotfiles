@@ -170,7 +170,7 @@ apps=(
     packer
     vlc
     mitmproxy
-    spectacle
+    shiftit
 )
 
 # Install apps to /Applications

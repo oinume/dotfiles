@@ -6,7 +6,7 @@ if [ "$TARGET" = "" ]; then
     exit 1
 fi
 
-packages=$(go list ./... | grep -v '/vendor/' | grep -v proto | perl -pe "s!$TARGET!!g")
+packages=$(go list ./... | grep -v '/vendor/' | grep -v proto | perl -pe "s!$TARGET/!!g")
 PACKAGES=$packages
 
 set -x

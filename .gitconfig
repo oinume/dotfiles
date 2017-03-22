@@ -38,3 +38,7 @@
 	compactionHeuristic = true
 [ghq]
 	root = ~/workspace
+[http]
+	sslVerify = true
+[http "https://gopkg.in"]
+	followRedirects = true

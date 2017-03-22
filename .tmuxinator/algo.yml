@@ -1,5 +1,5 @@
 name: algo
-root: ~/workspace/oinume/algo
+root: ~/go/src/github.com/oinume/algo
 
 # Optional tmux socket
 # socket_name: foo

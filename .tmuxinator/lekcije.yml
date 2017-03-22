@@ -37,7 +37,7 @@ windows:
           - ~/dotfiles/bin/goimports.sh github.com/oinume/lekcije/
         - server:
           - pwd
-          - reflex -R node_modules -R vendor -r '\.go$' -s make serve
+          - reflex -R node_modules -R vendor -R .venv -r '\.go$' -s make serve
   - docker:
       layout: main-vertical
       panes:

@@ -32,9 +32,6 @@ windows:
   - server:
       layout: even-vertical
       panes:
-        - goimports:
-          - pwd
-          - ~/dotfiles/bin/goimports.sh github.com/oinume/lekcije/
         - server:
           - pwd
           - reflex -R node_modules -R vendor -R .venv -r '\.go$' -s make serve

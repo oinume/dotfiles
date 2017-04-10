@@ -40,6 +40,7 @@ packages=(
     bash
     peco
     ghq
+    jid
 
     # Multiplexe
     tmux

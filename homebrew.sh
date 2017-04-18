@@ -149,7 +149,6 @@ apps=(
     karabiner
     sketch
     slate
-    xtrafinder
     quitter
 
     # development

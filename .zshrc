@@ -45,7 +45,7 @@ if exists direnv; then
 fi
 
 # homebrew cask
-export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/opt/homebrew-cask/Caskroom"
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # homebrew's ruby
 PREFIX_RUBY=`brew --prefix ruby`
@@ -177,3 +177,4 @@ function git_author_private() {
     export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
     env | grep GIT_
 }
+

@@ -34,11 +34,12 @@ windows:
       panes:
         - server:
           - pwd
-          - reflex -R node_modules -R vendor -R .venv -r '\.go$' -s make serve
+          - make watch
   - docker:
       layout: main-vertical
       panes:
         - docker-compose:
+          - docker-machine start default
           - eval $(docker-machine env default)
           - docker-compose up
   - mysql:

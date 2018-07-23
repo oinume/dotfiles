@@ -80,6 +80,11 @@ if [ -d "$HOME/.nodebrew" ]; then
     _PATH=$HOME/.nodebrew/current/bin:$_PATH
 fi
 
+# flutter
+if [ -d "$HOME"/flutter ]; then
+    _PATH=$HOME/flutter/bin:$_PATH
+fi
+
 # MySQL
 if [ -d /usr/local/mysql ]; then
     _PATH=/usr/local/mysql/bin:$_PATH
@@ -177,4 +182,3 @@ function git_author_private() {
     export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
     env | grep GIT_
 }
-

@@ -7,6 +7,3 @@
 [submodule "zaw"]
 	path = zaw
 	url = git@github.com:zsh-users/zaw.git
-[submodule "bash-it"]
-	path = bash-it
-	url = git@github.com:Bash-it/bash-it.git

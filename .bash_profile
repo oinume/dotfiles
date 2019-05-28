@@ -1,7 +1,7 @@
-export ANYENV_ROOT="/Users/oinuma/.anyenv"
-export PATH=$PATH:"/Users/oinuma/.anyenv/bin"
-eval "$(anyenv init -)"
-export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
+#export ANYENV_ROOT="/Users/oinuma/.anyenv"
+#export PATH=$PATH:"/Users/oinuma/.anyenv/bin"
+#eval "$(anyenv init -)"
+#export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
 
 # If not running interactively, don't do anything
 case $- in

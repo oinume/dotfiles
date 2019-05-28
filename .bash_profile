@@ -10,7 +10,7 @@ case $- in
 esac
 
 # Path to the bash it configuration
-export BASH_IT="$HOME/dotfiles/bash-it"
+export BASH_IT="$HOME/dotfiles/.bash-it"
 
 # Lock and Load a custom theme file.
 # Leave empty to disable theming.

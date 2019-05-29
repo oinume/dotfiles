@@ -3,6 +3,9 @@
 #eval "$(anyenv init -)"
 #export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
 
+source ~/dotfiles/.git-prompt.sh
+export PROMPT='\w \[\e[1;32m$(__git_ps1 "git:%s") \[\e[0m\]\$ '
+
 # If not running interactively, don't do anything
 case $- in
   *i*) ;;

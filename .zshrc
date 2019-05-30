@@ -167,15 +167,7 @@ if [ ! -d "$GOPATH/src/github.com/motemen/gore" ]; then
     go get -u github.com/motemen/gore
 fi
 
-function git_author_ca() {
-    export GIT_AUTHOR_NAME="oinuma-kazuhiro"
-    export GIT_AUTHOR_EMAIL="oinuma_kazuhiro@cyberagent.co.jp"
-    export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME
-    export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
-    env | grep GIT_
-}
-
-function git_author_private() {
+function git_author_personal() {
     export GIT_AUTHOR_NAME="oinume"
     export GIT_AUTHOR_EMAIL="oinume@gmail.com"
     export GIT_COMMITTER_NAME=$GIT_AUTHOR_NAME

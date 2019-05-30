@@ -127,12 +127,28 @@ zstyle ':filter-select' case-insensitive yes
 if [ -f ~/zaw/zaw.zsh ]; then
     . ~/zaw/zaw.zsh
     bindkey '^xb' zaw
-    bindkey '^@' zaw-cdr
+# Use fzf-cdr
+#    bindkey '^@' zaw-cdr
     bindkey '^xa' zaw-ack
     bindkey '^xb' zaw-git-branches
     bindkey '^xh' zaw-history
     bindkey '^xt' zaw-tmux
     bindkey '^xs' zaw-ssh-hosts
+fi
+
+# fzf
+function fzf-cdr () {
+  local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+
+if exists fzf; then
+    zle -N fzf-cdr
+    bindkey "^@" fzf-cdr
 fi
 
 # percol

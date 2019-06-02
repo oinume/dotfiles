@@ -146,10 +146,23 @@ function fzf-cdr () {
   zle clear-screen
 }
 
+function fzf_select_history() {
+    local tac
+    exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
+    BUFFER=$(fc -l -n 1 | eval $tac | peco --query "$LBUFFER")
+    CURSOR=$#BUFFER         # move cursor
+    zle -R -c               # refresh
+}
+
 if exists fzf; then
     zle -N fzf-cdr
     bindkey "^@" fzf-cdr
+
+    zle -N fzf_select_history
+    bindkey '^R' fzf_select_history
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # percol
 if exists percol; then
@@ -174,8 +187,8 @@ if exists peco; then
         zle -R -c               # refresh
     }
 
-    zle -N peco_select_history
-    bindkey '^R' peco_select_history
+#    zle -N peco_select_history
+#    bindkey '^R' peco_select_history
 fi
 
 if [ ! -d "$GOPATH/src/github.com/motemen/gore" ]; then
@@ -190,3 +203,4 @@ function git_author_personal() {
     export GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL
     env | grep GIT_
 }
+

@@ -106,16 +106,13 @@ else
         bind '"\e^":'
 fi
 }
-#bind '"\C-r": " \C-e\C-u\C-y\ey\C-u`__fzf_history__`\e\C-e\er\e^"'
-
-# Ctrl-@ - cd into the selected directory
-bind '"\C-@": " \C-e\C-u`__fzf_cd__`\e\C-e\er\C-m"'
 
 #############################
 # enhancd
 #############################
 export ENHANCD_DIR=$HOME/dotfiles/enhancd
-[ -f ~/dotfiles/enahancd/init.sh ] && . ~/dotfiles/enhancd/init.sh
+[ -f $HOME/dotfiles/enhancd/init.sh ] && source ~/dotfiles/enhancd/init.sh
+bind -x '"\C-@": __enhancd::cd';
 
 #############################
 # bash-powerline

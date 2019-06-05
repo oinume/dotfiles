@@ -3,9 +3,9 @@
 #eval "$(anyenv init -)"
 #export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
 
-source ~/dotfiles/.git-prompt.sh
+#source ~/dotfiles/.git-prompt.sh
 #export PROMPT='\w \[\e[1;32m$(__git_ps1 "git:%s") \[\e[0m\]\$ '
-export PROMPT_COMMAND='__git_ps1 "\w" "\\\$ "'
+#export PROMPT_COMMAND='__git_ps1 "\w" "\\\$ "'
 
 # If not running interactively, don't do anything
 case $- in
@@ -71,4 +71,7 @@ source "$BASH_IT"/bash_it.sh
 # enhancd
 export ENHANCD_DIR=$HOME/dotfiles/enhancd
 [ -f ~/dotfiles/enahancd/init.sh ] && . ~/dotfiles/enhancd/init.sh
+
+# bash-powerline
+[ -f ~/dotfiles/bash-powerline.sh ] && . ~/dotfiles/bash-powerline.sh
 

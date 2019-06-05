@@ -11,7 +11,7 @@ __powerline() {
     readonly COLOR_SUCCESS='\[\033[0;32m\]' # green
     readonly COLOR_FAILURE='\[\033[0;31m\]' # red
 
-    readonly SYMBOL_GIT_BRANCH='⑂'
+    readonly SYMBOL_GIT_BRANCH=''
     readonly SYMBOL_GIT_MODIFIED='*'
     readonly SYMBOL_GIT_PUSH='↑'
     readonly SYMBOL_GIT_PULL='↓'
@@ -24,7 +24,7 @@ __powerline() {
       esac
     fi
 
-    __git_info() { 
+    __git_info() {
         [[ $POWERLINE_GIT = 0 ]] && return # disabled
         hash git 2>/dev/null || return # git not found
         local git_eng="env LANG=C git"   # force git output in English to make our work easier
@@ -61,7 +61,7 @@ __powerline() {
 
     ps1() {
         # Check the exit code of the previous command and display different
-        # colors in the prompt accordingly. 
+        # colors in the prompt accordingly.
         if [ $? -eq 0 ]; then
             local symbol="$COLOR_SUCCESS $PS_SYMBOL $RESET"
         else
@@ -82,7 +82,7 @@ __powerline() {
             local git="$COLOR_GIT$(__git_info)$RESET"
         fi
 
-        PS1="$cwd$git$symbol"
+        PS1="\w$git$symbol"
     }
 
     PROMPT_COMMAND="ps1${PROMPT_COMMAND:+; $PROMPT_COMMAND}"

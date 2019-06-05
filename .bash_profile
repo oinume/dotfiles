@@ -9,6 +9,7 @@
 #source ~/dotfiles/.git-prompt.sh
 #export PROMPT='\w \[\e[1;32m$(__git_ps1 "git:%s") \[\e[0m\]\$ '
 #export PROMPT_COMMAND='__git_ps1 "\w" "\\\$ "'
+export PS_SYMBOL='$'
 
 # If not running interactively, don't do anything
 case $- in

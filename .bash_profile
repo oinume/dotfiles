@@ -91,15 +91,18 @@ __fzf_history () {
     __ehc $(history | fzf --tac --tiebreak=index | perl -ne 'm/^\s*([0-9]+)/ and print "!$1"')
 }
 
-__ehc() {
-if [[ -n $1 ]];
-    bind '"\er": redraw-current-line'
-    bind '"\e^": magic-space'
-    READLINE_LINE=${READLINE_LINE:+${READLINE_LINE:0:READLINE_POINT}}${1}${READLINE_LINE:+${READLINE_LINE:READLINE_POINT}}
-    READLINE_POINT=$(( READLINE_POINT + ${#1} ))
+__ehc()
+{
+if
+        [[ -n $1 ]]
+then
+        bind '"\er": redraw-current-line'
+        bind '"\e^": magic-space'
+        READLINE_LINE=${READLINE_LINE:+${READLINE_LINE:0:READLINE_POINT}}${1}${READLINE_LINE:+${READLINE_LINE:READLINE_POINT}}
+        READLINE_POINT=$(( READLINE_POINT + ${#1} ))
 else
-    bind '"\er":'
-    bind '"\e^":'
+        bind '"\er":'
+        bind '"\e^":'
 fi
 }
 #bind '"\C-r": " \C-e\C-u\C-y\ey\C-u`__fzf_history__`\e\C-e\er\e^"'

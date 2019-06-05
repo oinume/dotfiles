@@ -6,9 +6,10 @@
 #############################
 # prompt
 #############################
-source ~/dotfiles/.git-prompt.sh
+#source ~/dotfiles/.git-prompt.sh
 #export PROMPT='\w \[\e[1;32m$(__git_ps1 "git:%s") \[\e[0m\]\$ '
-export PROMPT_COMMAND='__git_ps1 "\w" "\\\$ "'
+#export PROMPT_COMMAND='__git_ps1 "\w" "\\\$ "'
+export PS_SYMBOL='$'
 
 # If not running interactively, don't do anything
 case $- in
@@ -91,18 +92,32 @@ __fzf_history () {
     __ehc $(history | fzf --tac --tiebreak=index | perl -ne 'm/^\s*([0-9]+)/ and print "!$1"')
 }
 
-__ehc() {
-if [[ -n $1 ]];
-    bind '"\er": redraw-current-line'
-    bind '"\e^": magic-space'
-    READLINE_LINE=${READLINE_LINE:+${READLINE_LINE:0:READLINE_POINT}}${1}${READLINE_LINE:+${READLINE_LINE:READLINE_POINT}}
-    READLINE_POINT=$(( READLINE_POINT + ${#1} ))
+__ehc()
+{
+if
+        [[ -n $1 ]]
+then
+        bind '"\er": redraw-current-line'
+        bind '"\e^": magic-space'
+        READLINE_LINE=${READLINE_LINE:+${READLINE_LINE:0:READLINE_POINT}}${1}${READLINE_LINE:+${READLINE_LINE:READLINE_POINT}}
+        READLINE_POINT=$(( READLINE_POINT + ${#1} ))
 else
-    bind '"\er":'
-    bind '"\e^":'
+        bind '"\er":'
+        bind '"\e^":'
 fi
 }
 #bind '"\C-r": " \C-e\C-u\C-y\ey\C-u`__fzf_history__`\e\C-e\er\e^"'
 
 # Ctrl-@ - cd into the selected directory
 bind '"\C-@": " \C-e\C-u`__fzf_cd__`\e\C-e\er\C-m"'
+
+#############################
+# enhancd
+#############################
+export ENHANCD_DIR=$HOME/dotfiles/enhancd
+[ -f ~/dotfiles/enahancd/init.sh ] && . ~/dotfiles/enhancd/init.sh
+
+#############################
+# bash-powerline
+#############################
+[ -f ~/dotfiles/bash-powerline.sh ] && . ~/dotfiles/bash-powerline.sh

@@ -82,7 +82,7 @@ __powerline() {
             local git="$COLOR_GIT$(__git_info)$RESET"
         fi
 
-        PS1="\w$git$symbol"
+        PS1="\W$git$symbol"
     }
 
     PROMPT_COMMAND="ps1${PROMPT_COMMAND:+; $PROMPT_COMMAND}"

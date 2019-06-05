@@ -67,3 +67,8 @@ export SCM_CHECK=true
 
 # Load Bash It
 source "$BASH_IT"/bash_it.sh
+
+# enhancd
+export ENHANCD_DIR=$HOME/dotfiles/enhancd
+[ -f ~/dotfiles/enahancd/init.sh ] && . ~/dotfiles/enhancd/init.sh
+

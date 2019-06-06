@@ -118,3 +118,7 @@ bind -x '"\C-@": __enhancd::cd';
 # bash-powerline
 #############################
 [ -f ~/dotfiles/bash-powerline.sh ] && . ~/dotfiles/bash-powerline.sh
+
+# tmuxinator
+[ -f ~/dotfiles/.tmuxinator/tmuxinator.bash ] && . ~/dotfiles/.tmuxinator/tmuxinator.bash
+

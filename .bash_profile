@@ -26,6 +26,7 @@ function share_history {
 PROMPT_COMMAND='share_history'
 shopt -u histappend
 export HISTSIZE=2000
+export PROMPT_DIRTRIM=2
 
 #############################
 # bash-it

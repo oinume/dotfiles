@@ -92,7 +92,7 @@ source "$BASH_IT"/bash_it.sh
 #############################
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
-export FZF_DEFAULT_OPTS='--height 60% --border'
+export FZF_DEFAULT_OPTS='--height 70% --border'
 
 # Another CTRL-R script to insert the selected command from history into the command line/region
 # re-wrote the script above
@@ -121,15 +121,28 @@ fi
 #############################
 # enhancd
 #############################
-export ENHANCD_DIR=$HOME/dotfiles/enhancd
-[ -f $HOME/dotfiles/enhancd/init.sh ] && source ~/dotfiles/enhancd/init.sh
-bind -x '"\C-@": __enhancd::cd';
+#export ENHANCD_DIR=$HOME/dotfiles/enhancd
+#export ENHANCD_COMPLETION_BEHAVIOR=history
+#[ -f $HOME/dotfiles/enhancd/init.sh ] && source ~/dotfiles/enhancd/init.sh
+#bind -x '"\C-@": __enhancd::cd';
 
 #############################
 # bash-powerline
 #############################
 [ -f ~/dotfiles/bash-powerline.sh ] && . ~/dotfiles/bash-powerline.sh
 
+#############################
 # tmuxinator
+#############################
 [ -f ~/dotfiles/.tmuxinator/tmuxinator.bash ] && . ~/dotfiles/.tmuxinator/tmuxinator.bash
 
+#############################
+# cdhist
+#############################
+[ -f ~/dotfiles/cdhist.sh ] && . ~/dotfiles/cdhist.sh
+
+_cd_cdhist() {
+  cd "$(for i in "${CDHIST_CDQ[@]}"; do echo $i; done | fzf)"
+}
+
+bind -x '"\C-@": _cd_cdhist';

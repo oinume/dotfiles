@@ -1,14 +1,6 @@
-#export ANYENV_ROOT="/Users/oinuma/.anyenv"
-#export PATH=$PATH:"/Users/oinuma/.anyenv/bin"
-#eval "$(anyenv init -)"
-#export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
-
 #############################
 # prompt
 #############################
-#source ~/dotfiles/.git-prompt.sh
-#export PROMPT='\w \[\e[1;32m$(__git_ps1 "git:%s") \[\e[0m\]\$ '
-#export PROMPT_COMMAND='__git_ps1 "\w" "\\\$ "'
 export PS_SYMBOL='$'
 
 # If not running interactively, don't do anything
@@ -146,3 +138,6 @@ _cd_cdhist() {
 }
 
 bind -x '"\C-@": _cd_cdhist';
+
+# Source extra configuration file
+[ -f ~/.bash_profile.local ] && . ~/.bash_profile.local

@@ -20,6 +20,9 @@ shopt -u histappend
 export HISTSIZE=2000
 export PROMPT_DIRTRIM=2
 
+# bash-completion
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
 #############################
 # bash-it
 #############################

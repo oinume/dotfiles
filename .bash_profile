@@ -140,7 +140,30 @@ _cd_cdhist() {
   cd "$(for i in "${CDHIST_CDQ[@]}"; do echo $i; done | fzf)"
 }
 
-bind -x '"\C-@": _cd_cdhist';
+#bind -x '"\C-@": _cd_cdhist';
 
 # Source extra configuration file
 [ -f ~/.bash_profile.local ] && . ~/.bash_profile.local
+
+#############################
+# fasd
+#############################
+eval "$(fasd --init auto)"
+# unalias z
+# z() {
+#   if [[ -z "$*" ]]; then
+#     cd "$(fasd_cd -d | fzf -1 -0 --no-sort --tac +m | sed 's/^[0-9,.]* *//')"
+#   else
+#     cd "$(fasd_cd -d | fzf --query="$*" -1 -0 --no-sort --tac +m | sed 's/^[0-9,.]* *//')"
+#   fi
+# }
+# Requires fasd: https://github.com/clvv/fasd
+_fzf_fasd() {
+  if [[ -z "$*" ]]; then
+    cd "$(fasd_cd -d | fzf -1 -0 --no-sort --tac +m | sed 's/^[0-9,.]* *//')"
+  else
+    cd "$(fasd_cd -d | fzf --query="$*" -1 -0 --no-sort --tac +m | sed 's/^[0-9,.]* *//')"
+  fi
+}
+
+bind -x '"\C-@": _fzf_fasd';

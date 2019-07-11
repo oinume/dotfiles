@@ -131,6 +131,13 @@ fi
 #############################
 [ -f ~/dotfiles/.tmuxinator/tmuxinator.bash ] && . ~/dotfiles/.tmuxinator/tmuxinator.bash
 
+# Go
+if [ -d /usr/local/opt/go/libexec ]; then
+    export GOROOT=/usr/local/opt/go/libexec
+    export GOPATH=$HOME/go
+    _PATH=$_PATH:$GOPATH/bin:$GOROOT/bin
+fi
+
 #############################
 # cdhist
 #############################
@@ -167,3 +174,9 @@ _fzf_fasd() {
 }
 
 bind -x '"\C-@": _fzf_fasd';
+
+# PATH
+# PATH
+if [ -n "$_PATH" ]; then
+    export PATH="$_PATH:$PATH"
+fi

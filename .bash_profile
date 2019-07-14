@@ -138,6 +138,9 @@ if [ -d /usr/local/opt/go/libexec ]; then
     _PATH=$_PATH:$GOPATH/bin:$GOROOT/bin
 fi
 
+# direnv
+eval "$(direnv hook bash)"
+
 #############################
 # cdhist
 #############################

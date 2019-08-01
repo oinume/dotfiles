@@ -144,6 +144,11 @@ if [ -d "$JAVA_HOME" ]; then
     _PATH=$_PATH:$JAVA_HOME/bin
 fi
 
+# nodebrew
+if [ -d "$HOME/.nodebrew" ]; then
+    _PATH=$HOME/.nodebrew/current/bin:$_PATH
+fi
+
 # direnv
 eval "$(direnv hook bash)"
 

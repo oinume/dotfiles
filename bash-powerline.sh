@@ -82,7 +82,14 @@ __powerline() {
             local git="$COLOR_GIT$(__git_info)$RESET"
         fi
 
-        PS1="\w$git$symbol"
+        #PS1="\w$git$symbol"
+        __path_shrinker=$(which path-shrinker)
+        if [ "$__path_shrinker" != "" ]; then
+            __cwd=$(path-shrinker -fish)
+        else
+            __cwd='\w'
+        fi
+        PS1="$__cwd$git$symbol"
     }
 
     PROMPT_COMMAND="ps1${PROMPT_COMMAND:+; $PROMPT_COMMAND}"

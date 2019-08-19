@@ -159,6 +159,17 @@ if [ -d /usr/local/opt/go/libexec ]; then
     _PATH=$_PATH:$GOPATH/bin:$GOROOT/bin
 fi
 
+# JDK
+JAVA_HOME=$(/usr/libexec/java_home -v "1.8")
+if [ -d "$JAVA_HOME" ]; then
+    _PATH=$_PATH:$JAVA_HOME/bin
+fi
+
+# nodebrew
+if [ -d "$HOME/.nodebrew" ]; then
+    _PATH=$HOME/.nodebrew/current/bin:$_PATH
+fi
+
 # direnv
 eval "$(direnv hook bash)"
 
@@ -199,7 +210,6 @@ _fzf_fasd() {
 
 bind -x '"\C-@": _fzf_fasd';
 
-# PATH
 # PATH
 if [ -n "$_PATH" ]; then
     export PATH="$_PATH:$PATH"

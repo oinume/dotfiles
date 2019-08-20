@@ -206,18 +206,9 @@ fi
 # direnv
 eval "$(direnv hook bash)"
 
-#############################
-# cdhist
-#############################
-[ -f ~/dotfiles/cdhist.sh ] && . ~/dotfiles/cdhist.sh
-
-_cd_cdhist() {
-  cd "$(for i in "${CDHIST_CDQ[@]}"; do echo $i; done | fzf)"
-}
-
-#bind -x '"\C-@": _cd_cdhist';
-
+#
 # Source extra configuration file
+#
 [ -f ~/.bash_profile.local ] && . ~/.bash_profile.local
 
 #############################

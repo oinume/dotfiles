@@ -168,14 +168,6 @@ fco_preview() {
 }
 
 #############################
-# enhancd
-#############################
-#export ENHANCD_DIR=$HOME/dotfiles/enhancd
-#export ENHANCD_COMPLETION_BEHAVIOR=history
-#[ -f $HOME/dotfiles/enhancd/init.sh ] && source ~/dotfiles/enhancd/init.sh
-#bind -x '"\C-@": __enhancd::cd';
-
-#############################
 # bash-powerline
 #############################
 [ -f ~/dotfiles/bash-powerline.sh ] && . ~/dotfiles/bash-powerline.sh

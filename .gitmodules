@@ -7,6 +7,3 @@
 [submodule "zaw"]
 	path = zaw
 	url = git@github.com:zsh-users/zaw.git
-[submodule "enhancd"]
-	path = enhancd
-	url = https://github.com/b4b4r07/enhancd.git

@@ -27,17 +27,10 @@ windows:
       layout: main-vertical
       panes:
         - pwd
-  # - vagrant:
-  #     layout: even-vertical
-  #     panes:
-  #       - editor:
-  #         - vagrant up && vagrant ssh
-  # - workspace_front:
-  #     layout: main-vertical
-  #     panes:
-  #       - pwd
-  # - workspace_server:
-  #     layout: main-vertical
-  #     panes:
-  #       - cd server
-  #       - pwd
+  - docker:
+      layout: main-vertical
+      panes:
+        - docker-compose:
+          - docker-machine start default
+          - eval $(docker-machine env default)
+          - docker-compose up

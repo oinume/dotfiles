@@ -23,10 +23,16 @@ root: ~/go/src/github.com/oinume/amamonitor
 #    - cd server && npm install && cd ../
 
 windows:
-  - main:
+  - frontend:
       layout: main-vertical
       panes:
         - pwd
+        - npm start
+  - backend:
+      layout: main-vertical
+      panes:
+        - pwd
+        - make watch
   - docker:
       layout: main-vertical
       panes:
@@ -34,3 +40,7 @@ windows:
           - docker-machine start default
           - eval $(docker-machine env default)
           - docker-compose up
+  - work:
+      layout: main-vertical
+      panes:
+        - pwd

@@ -184,6 +184,11 @@ if [ -d /usr/local/opt/go/libexec ]; then
     _PATH=$_PATH:$GOPATH/bin:$GOROOT/bin
 fi
 
+# Ruby
+if [ -d /usr/local/opt/ruby ]; then
+    _PATH=$_PATH:/usr/local/opt/ruby/bin
+fi
+
 # JDK
 JAVA_HOME=$(/usr/libexec/java_home -v "1.8")
 if [ -d "$JAVA_HOME" ]; then

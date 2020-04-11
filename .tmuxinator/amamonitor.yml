@@ -26,13 +26,15 @@ windows:
   - frontend:
       layout: main-vertical
       panes:
-        - pwd
-        - npm start
+        - npm:
+          - pwd
+          - npm start
   - backend:
       layout: main-vertical
       panes:
-        - pwd
-        - make watch
+        - backend:
+          - pwd
+          - make watch
   - docker:
       layout: main-vertical
       panes:
@@ -43,4 +45,6 @@ windows:
   - work:
       layout: main-vertical
       panes:
-        - pwd
+        - work:
+          - pwd
+

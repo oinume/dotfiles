@@ -184,6 +184,11 @@ if [ -d /usr/local/opt/go/libexec ]; then
     _PATH=$_PATH:$GOPATH/bin:$GOROOT/bin
 fi
 
+# Google App Engine
+if [ -d /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/platform/google_appengine ]; then
+    _PATH=$_PATH:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/platform/google_appengine
+fi
+
 # Ruby
 if [ -d /usr/local/opt/ruby ]; then
     _PATH=$_PATH:/usr/local/opt/ruby/bin

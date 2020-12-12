@@ -177,6 +177,15 @@ fco_preview() {
 #############################
 [ -f ~/dotfiles/.tmuxinator/tmuxinator.bash ] && . ~/dotfiles/.tmuxinator/tmuxinator.bash
 
+#############################
+# completion
+#############################
+BASH_COMPLETION_DIR=/usr/local/etc/bash_completion.d
+
+if [ -d $BASH_COMPLETION_DIR ]; then
+    source $BASH_COMPLETION_DIR/git-completion.bash
+fi
+
 # Go
 if [ -d /usr/local/opt/go/libexec ]; then
     export GOROOT=/usr/local/opt/go/libexec
@@ -187,6 +196,10 @@ fi
 # Google App Engine
 if [ -d /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/platform/google_appengine ]; then
     _PATH=$_PATH:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/platform/google_appengine
+fi
+
+if [ -d ~/go_appengine ]; then
+    _PATH=$_PATH:~/go_appengine
 fi
 
 # Ruby

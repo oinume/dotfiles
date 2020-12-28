@@ -218,6 +218,11 @@ if [ -d "$HOME/.nodebrew" ]; then
     _PATH=$HOME/.nodebrew/current/bin:$_PATH
 fi
 
+# Homebrew (/opt/homebrew)
+if [ -d /opt/homebrew ]; then
+    _PATH=/opt/homebrew/bin:$_PATH
+fi
+
 # direnv
 eval "$(direnv hook bash)"
 

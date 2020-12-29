@@ -90,6 +90,8 @@ _OS=$(uname -s)
 if [ $_OS = "Darwin" ]; then
   alias abrew="arch -arch arm64 /opt/homebrew/bin/brew"
   alias xbrew="arch -arch x86_64 /usr/local/bin/brew"
+  alias aexec="arch -arch arm64"
+  alias xexec="arch -arch x86_64"
 fi
 
 #############################

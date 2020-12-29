@@ -83,6 +83,16 @@ export SCM_CHECK=true
 source "$BASH_IT"/bash_it.sh
 
 #############################
+# Mac 
+#############################
+_ARCH=$(uname -m)
+_OS=$(uname -s)
+if [ $_OS = "Darwin" ]; then
+  alias abrew="arch -arch arm64 /opt/homebrew/bin/brew"
+  alias xbrew="arch -arch x86_64 /usr/local/bin/brew"
+fi
+
+#############################
 # fzf
 #############################
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

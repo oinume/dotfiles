@@ -88,7 +88,7 @@ source "$BASH_IT"/bash_it.sh
 _ARCH=$(uname -m)
 _OS=$(uname -s)
 if [ $_OS = "Darwin" ]; then
-  alias abrew="arch -arch arm64 /opt/homebrew/bin/brew"
+  alias abrew="arch -arch arm64e /opt/homebrew/bin/brew"
   alias xbrew="arch -arch x86_64 /usr/local/bin/brew"
 fi
 
@@ -177,6 +177,9 @@ fco_preview() {
   git checkout $(awk '{print $2}' <<<"$target" )
 }
 
+# IntelliJ IDEA
+alias idea="/Applications/IntelliJ\ IDEA.app/Contents/MacOS/idea"
+
 #############################
 # bash-powerline
 #############################
@@ -203,14 +206,20 @@ if [ -d /usr/local/opt/go/libexec ]; then
     _PATH=$_PATH:$GOPATH/bin:$GOROOT/bin
 fi
 
+# google-cloud-sdk
+if [ -d /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk ]; then
+  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
+  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
+fi
+
 # Google App Engine
 if [ -d /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/platform/google_appengine ]; then
     _PATH=$_PATH:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/platform/google_appengine
 fi
 
-if [ -d ~/go_appengine ]; then
-    _PATH=$_PATH:~/go_appengine
-fi
+#if [ -d ~/go_appengine ]; then
+#    _PATH=$_PATH:~/go_appengine
+#fi
 
 # Ruby
 if [ -d /usr/local/opt/ruby ]; then

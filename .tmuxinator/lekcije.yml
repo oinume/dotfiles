@@ -1,5 +1,5 @@
 name: lekcije
-root: ~/go/src/github.com/oinume/lekcije
+root: ~/workspace/oinume/lekcije
 
 # Optional tmux socket
 # socket_name: foo
@@ -26,19 +26,19 @@ windows:
   - npm:
       layout: main-vertical
       panes:
-        - npm:
-          - pwd
-          - npm start
+        - frontend:
+          - cd frontend
   - server:
       layout: even-vertical
       panes:
-        - server:
-          - pwd
+        - backend:
+          - cd backend
           - make watch
   - docker:
       layout: main-vertical
       panes:
         - docker-compose:
+          - cd backend
           - docker-machine start default
           - eval $(docker-machine env default)
           - docker-compose up
@@ -46,11 +46,13 @@ windows:
       layout: main-vertical
       panes:
         - mysql:
+          - cd backend
           - mysql -uroot -proot -h $(docker-machine ip default) -P 13306 lekcije
   - workspace:
       layout: main-vertical
       panes:
         - workspace:
+          - cd frontend
           - pwd
   # - workspace_server:
   #     layout: main-vertical

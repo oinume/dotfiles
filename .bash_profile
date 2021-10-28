@@ -202,8 +202,8 @@ if [ -d $BASH_COMPLETION_DIR ]; then
 fi
 
 # Go
-if [ -d /usr/local/opt/go/libexec ]; then
-    export GOROOT=/usr/local/opt/go/libexec
+if [ -d /opt/homebrew/Cellar/go/1.17.2/libexec ]; then
+    export GOROOT=/opt/homebrew/Cellar/go/1.17.2/libexec
     export GOPATH=$HOME/go
     _PATH=$_PATH:$GOPATH/bin:$GOROOT/bin
 fi
@@ -234,10 +234,20 @@ if [ -d "$JAVA_HOME" ]; then
     _PATH=$_PATH:$JAVA_HOME/bin
 fi
 
+# Android
+if [ -d ~/Library/Android/sdk/platform-tools ]; then
+    _PATH=~/Library/Android/sdk/platform-tools:$_PATH
+fi
+
 # nodebrew
 if [ -d "$HOME/.nodebrew" ]; then
     _PATH=$HOME/.nodebrew/current/bin:$_PATH
 fi
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 # Homebrew (/opt/homebrew)
 if [ -d /opt/homebrew ]; then

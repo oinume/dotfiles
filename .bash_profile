@@ -15,7 +15,7 @@ function share_history {
     history -r
 }
 
-PROMPT_COMMAND='share_history'
+PROMPT_COMMAND="share_history"
 shopt -u histappend
 export HISTSIZE=5000
 export PROMPT_DIRTRIM=2
@@ -246,7 +246,21 @@ fi
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
+function detect_nvmrc() {
+  if [[ $PWD == $PREV_PWD ]]; then
+    return
+  fi
+
+  PREV_PWD=$PWD
+  [[ -f ".nvmrc" ]] && nvm use
+}
+
+if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
+  . "/opt/homebrew/opt/nvm/nvm.sh"
+  PROMPT_COMMAND="$PROMPT_COMMAND;detect_nvmrc" 
+fi
+
+#[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 # Homebrew (/opt/homebrew)

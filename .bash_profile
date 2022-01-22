@@ -17,7 +17,7 @@ function share_history {
 
 PROMPT_COMMAND='share_history'
 shopt -u histappend
-export HISTSIZE=3000
+export HISTSIZE=5000
 export PROMPT_DIRTRIM=2
 
 # bash-completion
@@ -240,9 +240,9 @@ if [ -d ~/Library/Android/sdk/platform-tools ]; then
 fi
 
 # nodebrew
-if [ -d "$HOME/.nodebrew" ]; then
-    _PATH=$HOME/.nodebrew/current/bin:$_PATH
-fi
+#if [ -d "$HOME/.nodebrew" ]; then
+#    _PATH=$HOME/.nodebrew/current/bin:$_PATH
+#fi
 
 # nvm
 export NVM_DIR="$HOME/.nvm"

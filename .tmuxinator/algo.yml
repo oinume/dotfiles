@@ -1,5 +1,5 @@
 name: algo
-root: ~/go/src/github.com/oinume/algo
+root: ~/workspace/oinume/algo
 
 # Optional tmux socket
 # socket_name: foo
@@ -23,21 +23,11 @@ root: ~/go/src/github.com/oinume/algo
 #    - cd server && npm install && cd ../
 
 windows:
-  - main:
+  - algo:
       layout: main-vertical
       panes:
         - pwd
-  # - vagrant:
-  #     layout: even-vertical
-  #     panes:
-  #       - editor:
-  #         - vagrant up && vagrant ssh
-  # - workspace_front:
-  #     layout: main-vertical
-  #     panes:
-  #       - pwd
-  # - workspace_server:
-  #     layout: main-vertical
-  #     panes:
-  #       - cd server
-  #       - pwd
+  - coding-challenge:
+      layout: main-vertical
+      panes:
+        - cd ../coding-challenge

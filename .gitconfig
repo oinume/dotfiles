@@ -6,7 +6,7 @@
 [core]
     autocrlf = false
     editor = vim -c \"set fenc=utf-8\"
-    excludesfile = /Users/kazuhiro/.gitignore_global
+	excludesfile = /Users/oinuma/.gitignore_global
 [alias]
     amend     = commit --amend -a
     br = branch
@@ -45,3 +45,7 @@
 	followRedirects = true
 [pull]
 	rebase = false
+#[url "ssh://git@github.com/"]
+#	insteadOf = https://github.com/
+[url "https://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:x-oauth-basic@github.com/"]
+	insteadOf = https://github.com/

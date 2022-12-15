@@ -17,8 +17,11 @@ function share_history {
 
 PROMPT_COMMAND="share_history"
 shopt -u histappend
-export HISTSIZE=5000
+export HISTSIZE=7000
 export PROMPT_DIRTRIM=2
+
+# local
+[[ -r "$HOME/.bash_local" ]] && . "$HOME/.bash_local"
 
 # bash-completion
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
@@ -202,26 +205,34 @@ if [ -d $BASH_COMPLETION_DIR ]; then
 fi
 
 # Go
-if [ -d /opt/homebrew/Cellar/go/1.17.2/libexec ]; then
-    export GOROOT=/opt/homebrew/Cellar/go/1.17.2/libexec
+if [ -d /opt/homebrew/opt/go/libexec ]; then
+    export GOROOT=/opt/homebrew/opt/go/libexec
     export GOPATH=$HOME/go
     _PATH=$_PATH:$GOPATH/bin:$GOROOT/bin
 fi
 
+
+#############################
 # google-cloud-sdk
+#############################
+
 if [ -d /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk ]; then
-  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
-  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
+    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
+    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
 fi
 
-# Google App Engine
-if [ -d /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/platform/google_appengine ]; then
-    _PATH=$_PATH:/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/platform/google_appengine
+if [ -d /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk ]; then
+    source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
+    source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
 fi
 
-#if [ -d ~/go_appengine ]; then
-#    _PATH=$_PATH:~/go_appengine
-#fi
+function gcp_project() {
+    gcloud projects list 
+}
+
+function gcp_set_project() {
+    gcloud config set project $1
+}
 
 # Ruby
 if [ -d /usr/local/opt/ruby ]; then
@@ -262,6 +273,10 @@ fi
 
 #[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+# volta
+export VOLTA_HOME="$HOME/.volta"
+_PATH=$_PATH:$VOLTA_HOME/bin
 
 # Homebrew (/opt/homebrew)
 if [ -d /opt/homebrew ]; then

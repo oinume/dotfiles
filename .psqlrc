@@ -1,0 +1,17 @@
+-- \set PROMPT1 '%[%033[1m%]%M %n@%/%R%[%033[0m%]%# '
+-- \set PROMPT2 '[more] %R > '
+\encoding utf8
+-- selectの結果が長い時、1カラムが複数行にわたって表示されてしまい見づらい。
+-- そこでexpanded display modeをonにすることで結果が縦に整列して表示されるようになる。
+\x auto
+\set VERBOSITY verbose
+-- デフォルトでは、NULLはスペースとして表示される
+-- 空白なのかnullなのか？これで違いが見えるようになる
+\pset null '<NULL>'
+-- データベースごとにヒストリファイルを作る
+\set HISTFILE ~/.psql_history- :DBNAME
+-- 1行で複数回コマンドが実行されたら、1回だけヒストリに保存
+\set HISTCONTROL ignoredups
+-- バージョン表示
+\set version 'SELECT version();'
+

@@ -266,12 +266,16 @@ function detect_nvmrc() {
   [[ -f ".nvmrc" ]] && nvm use
 }
 
+if [ -s "/usr/local/opt/nvm/nvm.sh" ]; then
+  . "/usr/local/opt/nvm/nvm.sh"
+  PROMPT_COMMAND="$PROMPT_COMMAND;detect_nvmrc"
+fi
+
 if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
   . "/opt/homebrew/opt/nvm/nvm.sh"
   PROMPT_COMMAND="$PROMPT_COMMAND;detect_nvmrc" 
 fi
 
-#[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 # volta

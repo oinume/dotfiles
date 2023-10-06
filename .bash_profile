@@ -25,6 +25,7 @@ export PROMPT_DIRTRIM=2
 
 # bash-completion
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 #############################
 # bash-it
@@ -239,6 +240,9 @@ if [ -d /usr/local/opt/ruby ]; then
     _PATH=$_PATH:/usr/local/opt/ruby/bin
 fi
 
+# rbenv
+eval "$(/opt/homebrew/bin/rbenv init - bash)"
+
 # JDK
 JAVA_HOME=$(/usr/libexec/java_home -v "1.8")
 if [ -d "$JAVA_HOME" ]; then
@@ -278,17 +282,15 @@ fi
 
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
-# volta
-export VOLTA_HOME="$HOME/.volta"
-_PATH=$_PATH:$VOLTA_HOME/bin
+# dart
+if [ -d /usr/local/opt/ruby ]; then
+    _PATH=$_PATH:$HOME/.pub-cache/bin
+fi
 
 # Homebrew (/opt/homebrew)
 if [ -d /opt/homebrew ]; then
     _PATH=/opt/homebrew/bin:$_PATH
 fi
-
-# direnv
-eval "$(direnv hook bash)"
 
 #
 # Source extra configuration file
@@ -322,3 +324,6 @@ bind -x '"\C-@": _fzf_fasd';
 if [ -n "$_PATH" ]; then
     export PATH="$_PATH:$PATH"
 fi
+
+# direnv
+eval "$(direnv hook bash)"

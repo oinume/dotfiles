@@ -241,7 +241,9 @@ if [ -d /usr/local/opt/ruby ]; then
 fi
 
 # rbenv
-eval "$(/opt/homebrew/bin/rbenv init - bash)"
+if [ -f /opt/homebrew/bin/rbenv ]; then
+    eval "$(/opt/homebrew/bin/rbenv init - bash)"
+fi
 
 # JDK
 JAVA_HOME=$(/usr/libexec/java_home -v "1.8")
@@ -253,11 +255,6 @@ fi
 if [ -d ~/Library/Android/sdk/platform-tools ]; then
     _PATH=~/Library/Android/sdk/platform-tools:$_PATH
 fi
-
-# nodebrew
-#if [ -d "$HOME/.nodebrew" ]; then
-#    _PATH=$HOME/.nodebrew/current/bin:$_PATH
-#fi
 
 # nvm
 export NVM_DIR="$HOME/.nvm"

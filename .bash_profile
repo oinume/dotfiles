@@ -227,11 +227,11 @@ if [ -d /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk ]; then
     source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
 fi
 
-function gcp_project() {
+function gcloud_projects() {
     gcloud projects list 
 }
 
-function gcp_set_project() {
+function gcloud_set_project() {
     gcloud config set project $1
 }
 
@@ -243,6 +243,7 @@ fi
 # rbenv
 if [ -f /opt/homebrew/bin/rbenv ]; then
     eval "$(/opt/homebrew/bin/rbenv init - bash)"
+    _PATH=$_PATH:$HOME/.rbenv/shims
 fi
 
 # JDK
@@ -254,6 +255,11 @@ fi
 # Android
 if [ -d ~/Library/Android/sdk/platform-tools ]; then
     _PATH=~/Library/Android/sdk/platform-tools:$_PATH
+fi
+
+# Flutter
+if [ -d ~/.pub-cache/bin/ ]; then
+    _PATH=$_PATH:~/.pub-cache/bin
 fi
 
 # nvm
@@ -288,11 +294,6 @@ fi
 if [ -d /opt/homebrew ]; then
     _PATH=/opt/homebrew/bin:$_PATH
 fi
-
-#
-# Source extra configuration file
-#
-[ -f ~/.bash_profile.local ] && . ~/.bash_profile.local
 
 #############################
 # fasd

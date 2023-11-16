@@ -6,7 +6,7 @@ fi
 
 # Auto-completion
 # ---------------
-[[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.bash" 2> /dev/null
+source "/opt/homebrew/opt/fzf/shell/completion.bash"
 
 # Key bindings
 # ------------

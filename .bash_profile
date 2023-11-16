@@ -20,6 +20,9 @@ shopt -u histappend
 export HISTSIZE=7000
 export PROMPT_DIRTRIM=2
 
+BREW_PREFIX_DIR=$(brew --prefix)
+BREW_CASKROOM_DIR=$BREW_PREFIX_DIR/Caskroom
+
 # local
 [[ -r "$HOME/.bash_local" ]] && . "$HOME/.bash_local"
 
@@ -217,14 +220,9 @@ fi
 # google-cloud-sdk
 #############################
 
-if [ -d /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk ]; then
-    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
-    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
-fi
-
-if [ -d /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk ]; then
-    source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
-    source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
+if [ -d "$BREW_CASKROOM_DIR/google-cloud-sdk/latest/google-cloud-sdk" ]; then
+    source "$BREW_CASKROOM_DIR/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
+    source "$BREW_CASKROOM_DIR/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
 fi
 
 function gcloud_projects() {

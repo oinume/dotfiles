@@ -5,7 +5,7 @@ export PS_SYMBOL='$'
 
 # If not running interactively, don't do anything
 case $- in
-  *i*) ;;
+    *i*) ;;
     *) return;;
 esac
 
@@ -95,10 +95,10 @@ source "$BASH_IT"/bash_it.sh
 _ARCH=$(uname -m)
 _OS=$(uname -s)
 if [ $_OS = "Darwin" ]; then
-  alias abrew="arch -arch arm64e /opt/homebrew/bin/brew"
-  alias xbrew="arch -arch x86_64 /usr/local/bin/brew"
-  alias aexec="arch -arch arm64"
-  alias xexec="arch -arch x86_64"
+    alias abrew="arch -arch arm64e /opt/homebrew/bin/brew"
+    alias xbrew="arch -arch x86_64 /usr/local/bin/brew"
+    alias aexec="arch -arch arm64"
+    alias xexec="arch -arch x86_64"
 fi
 
 #############################
@@ -134,19 +134,19 @@ fi
 
 # fbr - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
 function fbr() {
-  local branches branch
-  branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
-  branch=$(echo "$branches" |
+    local branches branch
+    branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
+    branch=$(echo "$branches" |
            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+    git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
 # fshow - git commit browser
 function fshow() {
-  git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
-      --bind "ctrl-m:execute:
+    git log --graph --color=always \
+        --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+    fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+        --bind "ctrl-m:execute:
                 (grep -o '[a-f0-9]\{7\}' | head -1 |
                 xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
                 {}
@@ -155,35 +155,35 @@ FZF-EOF"
 
 # fco - checkout git branch/tag
 fco() {
-  local tags branches target
-  branches=$(
-    git --no-pager branch --all \
-      --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
-    | sed '/^$/d') || return
-  tags=$(
-    git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}') || return
-  target=$(
-    (echo "$branches"; echo "$tags") |
-    fzf --no-hscroll --no-multi -n 2 \
-        --ansi) || return
-  git checkout $(awk '{print $2}' <<<"$target" )
+    local tags branches target
+    branches=$(
+      git --no-pager branch --all \
+        --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
+      | sed '/^$/d') || return
+    tags=$(
+      git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}') || return
+    target=$(
+      (echo "$branches"; echo "$tags") |
+      fzf --no-hscroll --no-multi -n 2 \
+          --ansi) || return
+    git checkout $(awk '{print $2}' <<<"$target" )
 }
 
 
 # fco_preview - checkout git branch/tag, with a preview showing the commits between the tag/branch and HEAD
 fco_preview() {
-  local tags branches target
-  branches=$(
-    git --no-pager branch --all \
-      --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
-    | sed '/^$/d') || return
-  tags=$(
-    git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}') || return
-  target=$(
-    (echo "$branches"; echo "$tags") |
-    fzf --no-hscroll --no-multi -n 2 \
-        --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
-  git checkout $(awk '{print $2}' <<<"$target" )
+    local tags branches target
+    branches=$(
+      git --no-pager branch --all \
+        --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
+      | sed '/^$/d') || return
+    tags=$(
+      git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}') || return
+    target=$(
+      (echo "$branches"; echo "$tags") |
+      fzf --no-hscroll --no-multi -n 2 \
+          --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
+    git checkout $(awk '{print $2}' <<<"$target" )
 }
 
 # IntelliJ IDEA
@@ -233,6 +233,14 @@ function gcloud_set_project() {
     gcloud config set project $1
 }
 
+#############################
+# Kubernetes
+#############################
+function enable_kubectl_completion() {
+#  source <(kubectl completion bash)
+  source "$(gcloud info --format='value(config.paths.sdk_root)')/path.bash.inc" && source "$(gcloud info --format='value(config.paths.sdk_root)')/completion.bash.inc"
+}
+
 # Ruby
 if [ -d /usr/local/opt/ruby ]; then
     _PATH=$_PATH:/usr/local/opt/ruby/bin
@@ -263,22 +271,22 @@ fi
 # nvm
 export NVM_DIR="$HOME/.nvm"
 function detect_nvmrc() {
-  if [[ $PWD == $PREV_PWD ]]; then
-    return
-  fi
+    if [[ $PWD == $PREV_PWD ]]; then
+        return
+    fi
 
-  PREV_PWD=$PWD
-  [[ -f ".nvmrc" ]] && nvm use
+    PREV_PWD=$PWD
+    [[ -f ".nvmrc" ]] && nvm use
 }
 
 if [ -s "/usr/local/opt/nvm/nvm.sh" ]; then
-  . "/usr/local/opt/nvm/nvm.sh"
-  PROMPT_COMMAND="$PROMPT_COMMAND;detect_nvmrc"
+    . "/usr/local/opt/nvm/nvm.sh"
+    PROMPT_COMMAND="$PROMPT_COMMAND;detect_nvmrc"
 fi
 
 if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
-  . "/opt/homebrew/opt/nvm/nvm.sh"
-  PROMPT_COMMAND="$PROMPT_COMMAND;detect_nvmrc" 
+    . "/opt/homebrew/opt/nvm/nvm.sh"
+    PROMPT_COMMAND="$PROMPT_COMMAND;detect_nvmrc" 
 fi
 
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
@@ -307,11 +315,11 @@ eval "$(fasd --init auto)"
 # }
 # Requires fasd: https://github.com/clvv/fasd
 _fzf_fasd() {
-  if [[ -z "$*" ]]; then
-    cd "$(fasd_cd -d | fzf -1 -0 --no-sort --tac +m | sed 's/^[0-9,.]* *//')"
-  else
-    cd "$(fasd_cd -d | fzf --query="$*" -1 -0 --no-sort --tac +m | sed 's/^[0-9,.]* *//')"
-  fi
+    if [[ -z "$*" ]]; then
+        cd "$(fasd_cd -d | fzf -1 -0 --no-sort --tac +m | sed 's/^[0-9,.]* *//')"
+    else
+        cd "$(fasd_cd -d | fzf --query="$*" -1 -0 --no-sort --tac +m | sed 's/^[0-9,.]* *//')"
+    fi
 }
 
 bind -x '"\C-@": _fzf_fasd';

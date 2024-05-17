@@ -20,7 +20,7 @@ shopt -u histappend
 export HISTSIZE=7000
 export PROMPT_DIRTRIM=2
 
-BREW_PREFIX_DIR=$(brew --prefix)
+BREW_PREFIX_DIR=$(/opt/homebrew/bin/brew --prefix)
 BREW_CASKROOM_DIR=$BREW_PREFIX_DIR/Caskroom
 
 # local
@@ -211,6 +211,7 @@ fi
 # Go
 if [ -d /opt/homebrew/opt/go/libexec ]; then
     export GOROOT=/opt/homebrew/opt/go/libexec
+#    export GOROOT=/opt/homebrew/Cellar/go@1.21/1.21.8/libexec
     export GOPATH=$HOME/go
     _PATH=$_PATH:$GOPATH/bin:$GOROOT/bin
 fi
@@ -233,12 +234,15 @@ function gcloud_set_project() {
     gcloud config set project $1
 }
 
+# JetBrains
+_PATH=$_PATH:/Users/oinume/Library/Application\ Support/JetBrains/Toolbox/scripts
+
 #############################
 # Kubernetes
 #############################
 function enable_kubectl_completion() {
 #  source <(kubectl completion bash)
-  source "$(gcloud info --format='value(config.paths.sdk_root)')/path.bash.inc" && source "$(gcloud info --format='value(config.paths.sdk_root)')/completion.bash.inc"
+    source "$(gcloud info --format='value(config.paths.sdk_root)')/path.bash.inc" && source "$(gcloud info --format='value(config.paths.sdk_root)')/completion.bash.inc"
 }
 
 # Ruby

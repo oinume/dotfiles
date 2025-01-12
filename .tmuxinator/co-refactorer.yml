@@ -1,5 +1,5 @@
-name: amamonitor
-root: ~/go/src/github.com/oinume/amamonitor
+name: co-refactorer
+root: ~/workspace/oinume/co-refactorer
 
 # Optional tmux socket
 # socket_name: foo
@@ -23,28 +23,8 @@ root: ~/go/src/github.com/oinume/amamonitor
 #    - cd server && npm install && cd ../
 
 windows:
-  - frontend:
+  - workspace:
       layout: main-vertical
       panes:
-        - npm:
-          - pwd
-          - npm start
-  - backend:
-      layout: main-vertical
-      panes:
-        - backend:
-          - pwd
-          - make watch
-  - docker:
-      layout: main-vertical
-      panes:
-        - docker-compose:
-          - docker-machine start default
-          - eval $(docker-machine env default)
-          - docker-compose up
-  - work:
-      layout: main-vertical
-      panes:
-        - work:
-          - pwd
-
+        - workspace:
+#            - cd backend/hasura

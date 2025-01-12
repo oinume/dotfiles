@@ -308,7 +308,7 @@ fi
 #############################
 # fasd
 #############################
-eval "$(fasd --init auto)"
+# eval "$(fasd --init auto)"
 # unalias z
 # z() {
 #   if [[ -z "$*" ]]; then
@@ -318,13 +318,13 @@ eval "$(fasd --init auto)"
 #   fi
 # }
 # Requires fasd: https://github.com/clvv/fasd
-_fzf_fasd() {
-    if [[ -z "$*" ]]; then
-        cd "$(fasd_cd -d | fzf -1 -0 --no-sort --tac +m | sed 's/^[0-9,.]* *//')"
-    else
-        cd "$(fasd_cd -d | fzf --query="$*" -1 -0 --no-sort --tac +m | sed 's/^[0-9,.]* *//')"
-    fi
-}
+# _fzf_fasd() {
+#     if [[ -z "$*" ]]; then
+#         cd "$(fasd_cd -d | fzf -1 -0 --no-sort --tac +m | sed 's/^[0-9,.]* *//')"
+#     else
+#         cd "$(fasd_cd -d | fzf --query="$*" -1 -0 --no-sort --tac +m | sed 's/^[0-9,.]* *//')"
+#     fi
+# }
 
 bind -x '"\C-@": _fzf_fasd';
 

@@ -204,6 +204,10 @@ alias idea="/Applications/IntelliJ\ IDEA.app/Contents/MacOS/idea"
 #############################
 BASH_COMPLETION_DIR=/usr/local/etc/bash_completion.d
 
+if [ -d /usr/local/bin ]; then
+    _PATH=$_PATH:/usr/local/bin
+fi
+
 if [ -d $BASH_COMPLETION_DIR ]; then
     source $BASH_COMPLETION_DIR/git-completion.bash
 fi

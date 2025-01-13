@@ -21,3 +21,6 @@ for file in .bash* .fzf.* .z* .gitconfig .tmux.conf; do
     rm -i ~/$file
     ln -s $PWD/$file ~/$file
 done
+
+# Workaround for "The operation couldn’t be completed. Unable to locate a Java Runtime."
+sudo ln -sfn $(brew --prefix)/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk

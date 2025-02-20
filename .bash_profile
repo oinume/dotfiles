@@ -186,9 +186,6 @@ fco_preview() {
     git checkout $(awk '{print $2}' <<<"$target" )
 }
 
-# IntelliJ IDEA
-alias idea="/Applications/IntelliJ\ IDEA.app/Contents/MacOS/idea"
-
 #############################
 # bash-powerline
 #############################

@@ -17,7 +17,7 @@ if [ ! -L ~/.tmuxinator -a -d ~/dotfiles/.tmuxinator ]; then
     ln -s ~/dotfiles/.tmuxinator ~/.tmuxinator
 fi
 
-for file in .bash* .fzf.* .z* .gitconfig .tmux.conf Brewfile; do
+for file in .bash* .fzf.* .z* .gitconfig .psqlrc .tmux.conf Brewfile; do
     rm -i ~/$file
     ln -s $PWD/$file ~/$file
 done

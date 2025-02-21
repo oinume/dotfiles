@@ -1,0 +1,49 @@
+{
+    "editor.accessibilitySupport": "off",
+    "git.confirmSync": false,
+    "chat.commandCenter.enabled": false,
+    "go.toolsManagement.go": "/opt/homebrew/Cellar/go/1.23.4/libexec/bin/go",
+    "go.useLanguageServer": true,
+    "gopls": {
+        "formatting.gofumpt": true,
+    },
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.profiles.osx": {
+        "bash": {
+            "path": "bash",
+            "args": [
+                "-l"
+            ],
+            "icon": "terminal-bash"
+        },
+        "zsh": {
+            "path": "zsh",
+            "args": [
+                "-l"
+            ]
+        },
+        "fish": {
+            "path": "fish",
+            "args": [
+                "-l"
+            ]
+        },
+        "tmux": {
+            "path": "tmux",
+            "icon": "terminal-tmux"
+        },
+        "pwsh": {
+            "path": "pwsh",
+            "icon": "terminal-powershell"
+        },
+        "bash (2)": {
+            "path": "/opt/homebrew/bin/bash",
+            "args": [
+                "-l"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.osx": "bash (2)",
+    "workbench.tree.indent": 20,
+    "extensions.ignoreRecommendations": true,
+}

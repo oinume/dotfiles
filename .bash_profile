@@ -22,6 +22,7 @@ export PROMPT_DIRTRIM=2
 
 BREW_PREFIX_DIR=$(/opt/homebrew/bin/brew --prefix)
 BREW_CASKROOM_DIR=$BREW_PREFIX_DIR/Caskroom
+HOMEBREW_NO_AUTO_UPDATE=1
 
 # local
 [[ -r "$HOME/.bash_local" ]] && . "$HOME/.bash_local"

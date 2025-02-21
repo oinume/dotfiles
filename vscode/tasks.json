@@ -1,0 +1,18 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Open Current File with IntelliJ IDEA",
+            "type": "shell",
+            "command": "idea",
+            "args": [
+                "${file}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+             "problemMatcher": []
+        }
+    ]
+}

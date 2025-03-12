@@ -17,7 +17,7 @@ function share_history {
 
 PROMPT_COMMAND="share_history"
 shopt -u histappend
-export HISTSIZE=7000
+export HISTSIZE=20000
 export PROMPT_DIRTRIM=2
 
 BREW_PREFIX_DIR=$(/opt/homebrew/bin/brew --prefix)

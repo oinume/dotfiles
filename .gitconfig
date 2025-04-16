@@ -6,7 +6,6 @@
 [core]
     autocrlf = false
     editor = vim -c \"set fenc=utf-8\"
-	excludesfile = /Users/oinuma/.gitignore_global
 [alias]
     amend     = commit --amend -a
     br = branch

@@ -23,21 +23,29 @@ root: ~/workspace/oinume/mojindeks
 #    - cd server && npm install && cd ../
 
 windows:
-  - native:
+  - web:
       layout: main-vertical
       panes:
-        - native:
-          - cd native
+        - web:
+          - cd web
+          - npm run dev
   - backend:
       layout: main-vertical
       panes:
         - backend:
           - cd backend
+          - make watch
   - hasura:
       layout: main-vertical
       panes:
         - hasura:
           - cd backend/hasura
+  - ngrok-backend:
+      layout: main-vertical
+      panes:
+        - backend:
+          - cd backend
+          - ngrok start mojindeks-backend
   - workspace:
       layout: main-vertical
       panes:

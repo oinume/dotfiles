@@ -11,7 +11,7 @@
 
 # Documentation:
 # @raycast.description single-quote-with-trailing-comma
-# @raycast.author Kazuhiro Oinuma
+# @raycast.author oinume
 # @raycast.authorURL https://github.com/oinume
 
 pbpaste | perl -pe "s/.*/'\$&',/"

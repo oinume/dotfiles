@@ -1,9 +1,0 @@
-[submodule "prezto"]
-	path = prezto
-	url = git@github.com:sorin-ionescu/prezto.git
-[submodule "percol"]
-	path = percol
-	url = git@github.com:mooz/percol.git
-[submodule "zaw"]
-	path = zaw
-	url = git@github.com:zsh-users/zaw.git

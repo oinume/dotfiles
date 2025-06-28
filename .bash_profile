@@ -309,29 +309,6 @@ if [ -d /opt/homebrew ]; then
     _PATH=/opt/homebrew/bin:$_PATH
 fi
 
-#############################
-# fasd
-#############################
-# eval "$(fasd --init auto)"
-# unalias z
-# z() {
-#   if [[ -z "$*" ]]; then
-#     cd "$(fasd_cd -d | fzf -1 -0 --no-sort --tac +m | sed 's/^[0-9,.]* *//')"
-#   else
-#     cd "$(fasd_cd -d | fzf --query="$*" -1 -0 --no-sort --tac +m | sed 's/^[0-9,.]* *//')"
-#   fi
-# }
-# Requires fasd: https://github.com/clvv/fasd
-# _fzf_fasd() {
-#     if [[ -z "$*" ]]; then
-#         cd "$(fasd_cd -d | fzf -1 -0 --no-sort --tac +m | sed 's/^[0-9,.]* *//')"
-#     else
-#         cd "$(fasd_cd -d | fzf --query="$*" -1 -0 --no-sort --tac +m | sed 's/^[0-9,.]* *//')"
-#     fi
-# }
-
-bind -x '"\C-@": _fzf_fasd';
-
 # PATH
 if [ -n "$_PATH" ]; then
     export PATH="$_PATH:$PATH"
@@ -339,4 +316,8 @@ fi
 
 # direnv
 eval "$(direnv hook bash)"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# This loads nvm bash_completion
+if [ -s "$NVM_DIR/bash_completion" ]; then
+    . "$NVM_DIR/bash_completion"
+fi

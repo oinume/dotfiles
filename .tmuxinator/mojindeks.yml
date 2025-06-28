@@ -1,5 +1,5 @@
 name: mojindex
-root: ~/workspace/oinume/mojindeks
+root: ~/workspace/oinume/products/apps/mojindeks
 
 # Optional tmux socket
 # socket_name: foo

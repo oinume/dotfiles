@@ -3,6 +3,8 @@
 #############################
 export PS_SYMBOL='$'
 
+## TODO: load file in /opt/homebrew/etc/bash_completion.d/
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -298,6 +300,7 @@ if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
 fi
 
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
 
 # dart
 if [ -d /usr/local/opt/ruby ]; then

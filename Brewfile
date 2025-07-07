@@ -20,8 +20,8 @@ brew "gh"
 brew "ghq"
 brew "gist"
 brew "git"
-brew "go", link: false
-brew "go@1.23"
+brew "go"
+brew "go@1.23", link: false
 brew "goreleaser"
 brew "graphicsmagick"
 brew "graphviz"

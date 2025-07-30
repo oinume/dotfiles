@@ -58,6 +58,7 @@ export GIT_HOSTING='git@git.domain.com'
 unset MAILCHECK
 
 # Change this to your console based IRC client of choice.
+#GOROOT=/opt/homebrew/Cellar/go@1.23/1.23.8/libexec
 export IRC_CLIENT='irssi'
 
 # Set this to the command you use for todo.txt-cli
@@ -217,7 +218,6 @@ fi
 # Go
 if [ -d /opt/homebrew/opt/go/libexec ]; then
     export GOROOT=/opt/homebrew/opt/go/libexec
-#    export GOROOT=/opt/homebrew/Cellar/go@1.21/1.21.8/libexec
     export GOPATH=$HOME/go
     _PATH=$_PATH:$GOPATH/bin:$GOROOT/bin
 fi
@@ -312,6 +312,10 @@ if [ -d /opt/homebrew ]; then
     _PATH=/opt/homebrew/bin:$_PATH
 fi
 
+if [ -d $HOME/.local/bin ]; then
+    _PATH=$HOME/.local/bin:$_PATH
+fi
+
 # PATH
 if [ -n "$_PATH" ]; then
     export PATH="$_PATH:$PATH"
@@ -324,3 +328,12 @@ eval "$(direnv hook bash)"
 if [ -s "$NVM_DIR/bash_completion" ]; then
     . "$NVM_DIR/bash_completion"
 fi
+
+# pnpm
+export PNPM_HOME="~/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+

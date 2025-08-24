@@ -192,6 +192,15 @@ fco_preview() {
     git checkout $(awk '{print $2}' <<<"$target" )
 }
 
+# fghpr - list pull requests with search query, then open selected pull-request with browser
+# Use like `fghpr -A '@me' -s closed`
+fghpr() {
+    gh pr list "$@" --json number,title -q '.[] | "\(.number) \(.title)"' \
+    | fzf --delimiter=' ' --with-nth=2.. \
+    | awk '{print $1}' \
+    | xargs -I {} gh pr view -w {}
+}
+
 #############################
 # bash-powerline
 #############################

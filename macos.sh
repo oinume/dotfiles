@@ -19,6 +19,11 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking 1
 # 副ボタンのクリック「右下隅をクリック」
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick 2
 
+#
+# Dock
+# https://do-zan.com/mac-dock-terminalcommand-settings/
+#
+
 # Dockの画面上の位置を「左」にする
 defaults write com.apple.dock orientation -string "left"
 # Dockのサイズ

@@ -22,6 +22,7 @@
 #    panic     = !tar cvf ../git_panic.tar *
     wdiff     = diff --word-diff=plain
 	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+	cleanup-branches = !git fetch --prune && git branch -vv | grep \": gone]\" | awk \"{print \\$1}\" | xargs -r git branch -d
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"

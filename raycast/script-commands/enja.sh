@@ -2,7 +2,7 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title translate
+# @raycast.title enja
 # @raycast.mode fullOutput
 
 # Optional parameters:

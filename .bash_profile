@@ -3,8 +3,6 @@
 #############################
 export PS_SYMBOL='$'
 
-## TODO: load file in /opt/homebrew/etc/bash_completion.d/
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -32,6 +30,7 @@ alias k=kubectl
 [[ -r "$HOME/.bash_local" ]] && . "$HOME/.bash_local"
 
 # bash-completion
+## TODO: load file in /opt/homebrew/etc/bash_completion.d/
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
@@ -310,6 +309,11 @@ fi
 
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
+# asdf
+if [ -x "$BREW_PREFIX_DIR/bin/asdf" ]; then
+    . "$BREW_PREFIX_DIR/opt/asdf/libexec/asdf.sh"
+    . "$BREW_PREFIX_DIR/etc/bash_completion.d/asdf"
+fi
 
 # dart
 if [ -d /usr/local/opt/ruby ]; then

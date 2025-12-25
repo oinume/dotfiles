@@ -12,6 +12,13 @@
                 "kind": "build",
                 "isDefault": true
             },
+            "presentation": {
+                "reveal": "silent",    // エラーがなければターミナルを表示しない
+                "focus": false,         // ターミナルにフォーカスを移さない
+                "panel": "shared",      // 他のタスクとターミナルを共有する
+                "showReuseMessage": false, // 「完了しました。キーを押すと閉じます」を出さない
+                "clear": true           // 実行前にターミナルを綺麗にする
+            },
              "problemMatcher": []
         }
     ]

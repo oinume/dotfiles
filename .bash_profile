@@ -320,6 +320,11 @@ if [ -d /usr/local/opt/ruby ]; then
     _PATH=$_PATH:$HOME/.pub-cache/bin
 fi
 
+# antigravity
+if [ -d ~/.antigravity/antigravity/bin ]; then
+    _PATH=$_PATH:$HOME/.antigravity/antigravity/bin
+fi
+
 # Homebrew (/opt/homebrew)
 if [ -d /opt/homebrew ]; then
     _PATH=/opt/homebrew/bin:$_PATH
@@ -349,4 +354,3 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-

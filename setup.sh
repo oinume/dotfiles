@@ -1,18 +1,5 @@
 #!/bin/sh
 
-# if [ ! -L ~/.zprezto -a -d ~/dotfiles/prezto ]; then
-#     ln -s ~/dotfiles/prezto ~/.zprezto
-# fi
-
-# if [ ! -L ~/zaw -a -d ~/dotfiles/zaw ]; then
-#     ln -s ~/dotfiles/zaw ~/zaw
-# fi
-
-# if [ ! -f ~/.percol.d/rc.py ]; then
-#     mkdir -p ~/.percol.d/
-#     ln -s $PWD/.percol.d/rc.py ~/.percol.d/rc.py
-# fi
-
 if [ ! -L ~/.tmuxinator -a -d ~/dotfiles/.tmuxinator ]; then
     ln -s ~/dotfiles/.tmuxinator ~/.tmuxinator
 fi
@@ -24,3 +11,11 @@ done
 
 # Workaround for "The operation couldn’t be completed. Unable to locate a Java Runtime."
 sudo ln -sfn $(brew --prefix)/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+
+# Check vscode directory exists then link settings
+if [ -d ~/Library/Application\ Support/Code/User ]; then
+    for file in keybindings.json settings.json tasks.json; do
+        rm -i ~/Library/Application\ Support/Code/User/$file
+        ln -s $PWD/vscode/$file ~/Library/Application\ Support/Code/User/$file
+    done
+fi

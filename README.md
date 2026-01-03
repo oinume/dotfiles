@@ -1,4 +1,6 @@
-# Install
+# dotfiles
+
+## Install
 
 ```bash
 $ git clone https://github.com/oinume/dotfiles --recurse-submodules
@@ -6,10 +8,8 @@ $ cd dotfiles
 $ ./setup.sh
 ```
 
-## Install percol
-Python 2.7 is required.
+## Install applications with homebrew
 
 ```bash
-$ cd percol
-$ python setup.py install
+brew bundle install
 ```

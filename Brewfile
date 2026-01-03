@@ -22,7 +22,7 @@ brew "gist"
 brew "git"
 brew "go"
 brew "go@1.23", link: false
-brew "go@1.24@, link: false
+brew "go@1.24", link: false
 brew "gopls"
 brew "goreleaser"
 brew "graphicsmagick"
@@ -87,7 +87,6 @@ cask "macwhisper"
 cask "ngrok"
 cask "obsidian"
 cask "raycast"
-cask "skype"
 cask "vagrant"
 cask "virtualbox"
 cask "visual-studio-code"

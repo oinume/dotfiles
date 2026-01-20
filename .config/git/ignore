@@ -2,6 +2,6 @@
 .idea
 *.iml
 .DS_Store
-
+.wtp.yml
 
 **/.claude/settings.local.json

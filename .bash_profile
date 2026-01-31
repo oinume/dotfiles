@@ -309,10 +309,21 @@ fi
 
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
-# asdf
-if [ -x "$BREW_PREFIX_DIR/bin/asdf" ]; then
-    . "$BREW_PREFIX_DIR/opt/asdf/libexec/asdf.sh"
-    . "$BREW_PREFIX_DIR/etc/bash_completion.d/asdf"
+# # asdf
+# if [ -x "$BREW_PREFIX_DIR/bin/asdf" ]; then
+#     . "$BREW_PREFIX_DIR/opt/asdf/libexec/asdf.sh"
+#     . "$BREW_PREFIX_DIR/etc/bash_completion.d/asdf"
+# fi
+
+# mise
+if [ -x "$BREW_PREFIX_DIR/bin/mise" ]; then
+    eval "$($BREW_PREFIX_DIR/bin/mise activate bash)"
+    . "$BREW_PREFIX_DIR/etc/bash_completion.d/mise"
+fi
+
+# wtp
+if [ -x "$BREW_PREFIX_DIR/bin/wtp" ]; then
+    eval "$(wtp shell-init bash)"
 fi
 
 # dart

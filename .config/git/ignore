@@ -5,3 +5,4 @@
 .wtp.yml
 
 **/.claude/settings.local.json
+worktrees/

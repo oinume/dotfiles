@@ -19,6 +19,7 @@ PROMPT_COMMAND="share_history"
 shopt -u histappend
 export HISTSIZE=20000
 export PROMPT_DIRTRIM=2
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 BREW_PREFIX_DIR=$(/opt/homebrew/bin/brew --prefix)
 BREW_CASKROOM_DIR=$BREW_PREFIX_DIR/Caskroom
@@ -109,33 +110,11 @@ fi
 #############################
 # fzf
 #############################
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# TODO: Remove fzf.bash
+#[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+eval "$(fzf --bash)"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 70% --border'
-
-# Another CTRL-R script to insert the selected command from history into the command line/region
-# re-wrote the script above
-bind '"\C-r": "\C-x1\e^\er"'
-bind -x '"\C-x1": __fzf_history';
-
-__fzf_history () {
-    __ehc $(history | fzf --tac --tiebreak=index | perl -ne 'm/^\s*([0-9]+)/ and print "!$1"')
-}
-
-__ehc()
-{
-if
-        [[ -n $1 ]]
-then
-        bind '"\er": redraw-current-line'
-        bind '"\e^": magic-space'
-        READLINE_LINE=${READLINE_LINE:+${READLINE_LINE:0:READLINE_POINT}}${1}${READLINE_LINE:+${READLINE_LINE:READLINE_POINT}}
-        READLINE_POINT=$(( READLINE_POINT + ${#1} ))
-else
-        bind '"\er":'
-        bind '"\e^":'
-fi
-}
 
 # fbr - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
 function fbr() {

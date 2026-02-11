@@ -1,10 +1,11 @@
-# CLAUDE.md
+# AGENTS.md (CLAUDE.md)
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to AI coding agents when working with code in this repository.
+`CLAUDE.md` is a symlink to this file.
 
 ## Repository Overview
 
-Personal dotfiles repository managing configuration for bash, git, tmux, vim/editorconfig, fzf, psql, VS Code, and tmuxinator.
+Personal dotfiles repository managing configuration for bash, git, tmux, vim/editorconfig, fzf, psql, VS Code, and tmuxinator on macOS.
 
 ## Setup
 
@@ -26,10 +27,15 @@ brew bundle install  # Install Homebrew packages from Brewfile
 - **`.tmux.conf`** — Tmux with `Ctrl-T` prefix, vi copy-mode, mouse support, status bar at top.
 - **`bash-powerline.sh`** — Custom bash prompt with git branch display.
 - **`vscode/`** — VS Code settings, keybindings, and tasks (Go with gopls/gofumpt).
+- **`go.sh`** — Go tool installation script.
+- **`macos.sh`** — macOS system defaults configuration.
+- **`raycast/`** — Raycast script commands and configs.
 
 ## Conventions
 
 - Dotfiles live in the repo root (not in a subdirectory) and are symlinked to `$HOME` by `setup.sh`.
 - Private/personal configs go in `.mine/`.
-- Tmuxinator project configs go in `.tmuxinator/`.
+- Tmuxinator project configs go in `.tmuxinator/`. Work-specific configs (`.tmuxinator/work-*.yml`) are gitignored.
 - The `bash-it/` directory exists but bash-it is currently disabled in `.bash_profile`.
+- When adding a new dotfile, add it to `setup.sh`'s symlink loop and place it in the repo root.
+- Git commits are signed with SSH keys via 1Password.

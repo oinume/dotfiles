@@ -135,8 +135,8 @@ export SCM_CHECK=true
 # Uncomment this to make Bash-it create alias reload.
 # export BASH_IT_RELOAD_LEGACY=1
 
-# Load Bash It
-source "$BASH_IT"/bash_it.sh
+# Load bash-it (disabled on 2026/2/11)
+#source "$BASH_IT"/bash_it.sh
 
 _bp_log "bash-it"
 

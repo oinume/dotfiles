@@ -62,7 +62,7 @@ _bp_log "prompt/history"
 # alias
 #############################
 alias k=kubectl
-alias cdproducts='cd ~/workspace/oinume/products
+alias cdproducts='cd ~/workspace/oinume/products'
 alias gps='git push'
 alias gpl='git pull --prune'
 

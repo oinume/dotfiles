@@ -386,27 +386,27 @@ if [ -d ~/.pub-cache/bin/ ]; then
 fi
 
 # nvm
-export NVM_DIR="$HOME/.nvm"
-function detect_nvmrc() {
-    if [[ $PWD == $PREV_PWD ]]; then
-        return
-    fi
+# export NVM_DIR="$HOME/.nvm"
+# function detect_nvmrc() {
+#     if [[ $PWD == $PREV_PWD ]]; then
+#         return
+#     fi
 
-    PREV_PWD=$PWD
-    [[ -f ".nvmrc" ]] && nvm use
-}
+#     PREV_PWD=$PWD
+#     [[ -f ".nvmrc" ]] && nvm use
+# }
 
-if [ -s "/usr/local/opt/nvm/nvm.sh" ]; then
-    . "/usr/local/opt/nvm/nvm.sh"
-    PROMPT_COMMAND="$PROMPT_COMMAND;detect_nvmrc"
-fi
+# if [ -s "/usr/local/opt/nvm/nvm.sh" ]; then
+#     . "/usr/local/opt/nvm/nvm.sh"
+#     PROMPT_COMMAND="$PROMPT_COMMAND;detect_nvmrc"
+# fi
 
-if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
-    . "/opt/homebrew/opt/nvm/nvm.sh"
-    PROMPT_COMMAND="$PROMPT_COMMAND;detect_nvmrc"
-fi
+# if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
+#     . "/opt/homebrew/opt/nvm/nvm.sh"
+#     PROMPT_COMMAND="$PROMPT_COMMAND;detect_nvmrc"
+# fi
 
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+# [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 _bp_log "nvm"
 
@@ -459,13 +459,6 @@ fi
 __cached_eval "direnv hook bash"
 
 _bp_log "direnv"
-
-# This loads nvm bash_completion
-if [ -s "$NVM_DIR/bash_completion" ]; then
-    . "$NVM_DIR/bash_completion"
-fi
-
-_bp_log "nvm bash_completion"
 
 # pnpm
 export PNPM_HOME="~/Library/pnpm"

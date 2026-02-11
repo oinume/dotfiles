@@ -1,4 +1,39 @@
 #############################
+# Profiling
+# Usage: BASH_PROFILE_PROFILING=1 bash -l
+#############################
+if [[ ${BASH_PROFILE_PROFILING:-0} -eq 1 ]]; then
+    if [[ -n "${EPOCHREALTIME+set}" ]]; then
+        _bp_get_ms() {
+            local t=$EPOCHREALTIME sec frac
+            sec=${t%.*}; frac=${t#*.}; frac=${frac:0:3}
+            while [[ ${#frac} -lt 3 ]]; do frac="${frac}0"; done
+            printf '%d' "$(( 10#$sec * 1000 + 10#$frac ))"
+        }
+    elif command -v gdate &>/dev/null; then
+        _bp_get_ms() {
+            local t
+            t=$(gdate +%s%3N)
+            printf '%d' "$t"
+        }
+    else
+        _bp_get_ms() { printf '%d' "$(( $(date +%s) * 1000 ))"; }
+    fi
+    _bp_start=$(_bp_get_ms)
+    _bp_prev=$_bp_start
+    _bp_log() {
+        local now total section
+        now=$(_bp_get_ms)
+        total=$(( now - _bp_start ))
+        section=$(( now - _bp_prev ))
+        printf "\033[33m[profile] %6d ms (+%4d ms)\033[0m %s\n" "$total" "$section" "$1" >&2
+        _bp_prev=$now
+    }
+else
+    _bp_log() { :; }
+fi
+
+#############################
 # prompt
 #############################
 export PS_SYMBOL='$'
@@ -21,19 +56,27 @@ export HISTSIZE=20000
 export PROMPT_DIRTRIM=2
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+_bp_log "prompt/history"
+
 BREW_PREFIX_DIR=$(/opt/homebrew/bin/brew --prefix)
 BREW_CASKROOM_DIR=$BREW_PREFIX_DIR/Caskroom
 HOMEBREW_NO_AUTO_UPDATE=1
+
+_bp_log "brew --prefix"
 
 alias k=kubectl
 
 # local
 [[ -r "$HOME/.bash_local" ]] && . "$HOME/.bash_local"
 
+_bp_log ".bash_local"
+
 # bash-completion
 ## TODO: load file in /opt/homebrew/etc/bash_completion.d/
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+
+_bp_log "bash-completion"
 
 #############################
 # bash-it
@@ -95,8 +138,10 @@ export SCM_CHECK=true
 # Load Bash It
 source "$BASH_IT"/bash_it.sh
 
+_bp_log "bash-it"
+
 #############################
-# Mac 
+# Mac
 #############################
 _ARCH=$(uname -m)
 _OS=$(uname -s)
@@ -115,6 +160,8 @@ fi
 eval "$(fzf --bash)"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 70% --border'
+
+_bp_log "fzf"
 
 # fbr - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
 function fbr() {
@@ -184,10 +231,14 @@ fghpr() {
 #############################
 [ -f ~/dotfiles/bash-powerline.sh ] && . ~/dotfiles/bash-powerline.sh
 
+_bp_log "bash-powerline"
+
 #############################
 # tmuxinator
 #############################
 [ -f ~/dotfiles/.tmuxinator/tmuxinator.bash ] && . ~/dotfiles/.tmuxinator/tmuxinator.bash
+
+_bp_log "tmuxinator"
 
 #############################
 # completion
@@ -201,6 +252,8 @@ fi
 if [ -d $BASH_COMPLETION_DIR ]; then
     source $BASH_COMPLETION_DIR/git-completion.bash
 fi
+
+_bp_log "completion (git)"
 
 # Go
 if [ -d /opt/homebrew/opt/go/libexec ]; then
@@ -219,8 +272,10 @@ if [ -d "$BREW_CASKROOM_DIR/google-cloud-sdk/latest/google-cloud-sdk" ]; then
     source "$BREW_CASKROOM_DIR/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
 fi
 
+_bp_log "google-cloud-sdk"
+
 function gcloud_projects() {
-    gcloud projects list 
+    gcloud projects list
 }
 
 function gcloud_set_project() {
@@ -249,11 +304,15 @@ if [ -f /opt/homebrew/bin/rbenv ]; then
     _PATH=$_PATH:$HOME/.rbenv/shims
 fi
 
+_bp_log "rbenv"
+
 # JDK
 JAVA_HOME=$(/usr/libexec/java_home -v "1.8")
 if [ -d "$JAVA_HOME" ]; then
     _PATH=$_PATH:$JAVA_HOME/bin
 fi
+
+_bp_log "JDK (java_home)"
 
 # Android
 if [ -d ~/Library/Android/sdk/platform-tools ]; then
@@ -283,10 +342,12 @@ fi
 
 if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
     . "/opt/homebrew/opt/nvm/nvm.sh"
-    PROMPT_COMMAND="$PROMPT_COMMAND;detect_nvmrc" 
+    PROMPT_COMMAND="$PROMPT_COMMAND;detect_nvmrc"
 fi
 
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+_bp_log "nvm"
 
 # # asdf
 # if [ -x "$BREW_PREFIX_DIR/bin/asdf" ]; then
@@ -300,10 +361,14 @@ if [ -x "$BREW_PREFIX_DIR/bin/mise" ]; then
     . "$BREW_PREFIX_DIR/etc/bash_completion.d/mise"
 fi
 
+_bp_log "mise"
+
 # wtp
 if [ -x "$BREW_PREFIX_DIR/bin/wtp" ]; then
     eval "$(wtp shell-init bash)"
 fi
+
+_bp_log "wtp"
 
 # dart
 if [ -d /usr/local/opt/ruby ]; then
@@ -332,10 +397,14 @@ fi
 # direnv
 eval "$(direnv hook bash)"
 
+_bp_log "direnv"
+
 # This loads nvm bash_completion
 if [ -s "$NVM_DIR/bash_completion" ]; then
     . "$NVM_DIR/bash_completion"
 fi
+
+_bp_log "nvm bash_completion"
 
 # pnpm
 export PNPM_HOME="~/Library/pnpm"
@@ -344,3 +413,11 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+_bp_log "===== TOTAL ====="
+
+# Cleanup profiling functions
+if [[ ${BASH_PROFILE_PROFILING:-0} -eq 1 ]]; then
+    unset -f _bp_get_ms _bp_log
+    unset _bp_start _bp_prev
+fi

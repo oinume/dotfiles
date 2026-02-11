@@ -360,10 +360,10 @@ if [ -d /usr/local/opt/ruby ]; then
 fi
 
 # rbenv
-if [ -f /opt/homebrew/bin/rbenv ]; then
-    __cached_eval "/opt/homebrew/bin/rbenv init - bash"
-    _PATH=$_PATH:$HOME/.rbenv/shims
-fi
+# if [ -f /opt/homebrew/bin/rbenv ]; then
+#     __cached_eval "/opt/homebrew/bin/rbenv init - bash"
+#     _PATH=$_PATH:$HOME/.rbenv/shims
+# fi
 
 _bp_log "rbenv"
 

@@ -34,7 +34,7 @@ else
 fi
 
 #############################
-# prompt
+# prompt and history
 #############################
 export PS_SYMBOL='$'
 
@@ -58,13 +58,21 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 _bp_log "prompt/history"
 
+#############################
+# alias
+#############################
+alias k=kubectl
+alias cdproducts='cd ~/workspace/oinume/products
+alias gps='git push'
+alias gpl='git pull --prune'
+
+_bp_log "alias"
+
 BREW_PREFIX_DIR=$(/opt/homebrew/bin/brew --prefix)
 BREW_CASKROOM_DIR=$BREW_PREFIX_DIR/Caskroom
 HOMEBREW_NO_AUTO_UPDATE=1
 
 _bp_log "brew --prefix"
-
-alias k=kubectl
 
 # local
 [[ -r "$HOME/.bash_local" ]] && . "$HOME/.bash_local"
@@ -101,7 +109,6 @@ export GIT_HOSTING='git@git.domain.com'
 unset MAILCHECK
 
 # Change this to your console based IRC client of choice.
-#GOROOT=/opt/homebrew/Cellar/go@1.23/1.23.8/libexec
 export IRC_CLIENT='irssi'
 
 # Set this to the command you use for todo.txt-cli

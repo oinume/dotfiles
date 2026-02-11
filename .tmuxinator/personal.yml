@@ -1,0 +1,15 @@
+name: personal
+root: ~/
+windows:
+  - dotfiles:
+      layout: main-vertical
+      panes:
+        - cd ~/dotfiles
+  - myservers:
+      layout: main-vertical
+      panes:
+        - cd ~/workspace/oinume/myservers
+  - terraforms:
+      layout: main-vertical
+      panes:
+        - cd ~/workspace/oinume/terraforms

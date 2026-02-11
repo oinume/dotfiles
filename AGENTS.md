@@ -25,7 +25,6 @@ brew bundle install  # Install Homebrew packages from Brewfile
 - **`.gitconfig`** — Git config with SSH signing via 1Password (`op-ssh-sign`), ghq root at `~/workspace`, and custom aliases (`amend`, `cleanup-branches`, `log-fancy`, etc.).
 - **`.tmux.conf`** — Tmux with `Ctrl-T` prefix, vi copy-mode, mouse support, status bar at top.
 - **`bash-powerline.sh`** — Custom bash prompt with git branch display.
-- **`cdhist.sh`** — Directory history navigation (browser-like back/forward for `cd`).
 - **`vscode/`** — VS Code settings, keybindings, and tasks (Go with gopls/gofumpt).
 
 ## Conventions

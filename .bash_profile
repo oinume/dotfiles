@@ -44,6 +44,31 @@ case $- in
     *) return;;
 esac
 
+# Cached eval: caches the output of slow `eval "$(cmd)"` calls.
+# Cache is invalidated when the binary's mtime changes.
+__cached_eval() {
+    local cmd="$1"
+    local cache_dir="${HOME}/.cache/bash_startup"
+    local cache_key
+    cache_key=$(echo "$cmd" | tr ' /' '__')
+    local cache_file="${cache_dir}/${cache_key}"
+    local bin_path
+    bin_path=$(command -v "${cmd%% *}" 2>/dev/null)
+
+    mkdir -p "$cache_dir"
+
+    if [ -s "$cache_file" ] && [ -n "$bin_path" ] && [ "$cache_file" -nt "$bin_path" ]; then
+        source "$cache_file"
+    else
+        local output
+        output=$(eval "$cmd" 2>/dev/null)
+        if [ -n "$output" ]; then
+            echo "$output" > "$cache_file"
+            eval "$output"
+        fi
+    fi
+}
+
 function share_history {
     history -a
     history -c
@@ -169,7 +194,7 @@ fi
 #############################
 # TODO: Remove fzf.bash
 #[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-eval "$($BREW_PREFIX_DIR/bin/fzf --bash)"
+__cached_eval "$BREW_PREFIX_DIR/bin/fzf --bash"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 70% --border'
 
@@ -336,7 +361,7 @@ fi
 
 # rbenv
 if [ -f /opt/homebrew/bin/rbenv ]; then
-    eval "$(/opt/homebrew/bin/rbenv init - bash)"
+    __cached_eval "/opt/homebrew/bin/rbenv init - bash"
     _PATH=$_PATH:$HOME/.rbenv/shims
 fi
 
@@ -393,7 +418,7 @@ _bp_log "nvm"
 
 # mise
 if [ -x "$BREW_PREFIX_DIR/bin/mise" ]; then
-    eval "$($BREW_PREFIX_DIR/bin/mise activate bash)"
+    __cached_eval "$BREW_PREFIX_DIR/bin/mise activate bash"
     . "$BREW_PREFIX_DIR/etc/bash_completion.d/mise"
 fi
 
@@ -401,7 +426,7 @@ _bp_log "mise"
 
 # wtp
 if [ -x "$BREW_PREFIX_DIR/bin/wtp" ]; then
-    eval "$(wtp shell-init bash)"
+    __cached_eval "wtp shell-init bash"
 fi
 
 _bp_log "wtp"
@@ -431,7 +456,7 @@ if [ -n "$_PATH" ]; then
 fi
 
 # direnv
-eval "$(direnv hook bash)"
+__cached_eval "direnv hook bash"
 
 _bp_log "direnv"
 

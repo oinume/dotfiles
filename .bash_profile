@@ -44,6 +44,31 @@ case $- in
     *) return;;
 esac
 
+# Cached eval: caches the output of slow `eval "$(cmd)"` calls.
+# Cache is invalidated when the binary's mtime changes.
+__cached_eval() {
+    local cmd="$1"
+    local cache_dir="${HOME}/.cache/bash_startup"
+    local cache_key
+    cache_key=$(echo "$cmd" | tr ' /' '__')
+    local cache_file="${cache_dir}/${cache_key}"
+    local bin_path
+    bin_path=$(command -v "${cmd%% *}" 2>/dev/null)
+
+    mkdir -p "$cache_dir"
+
+    if [ -s "$cache_file" ] && [ -n "$bin_path" ] && [ "$cache_file" -nt "$bin_path" ]; then
+        source "$cache_file"
+    else
+        local output
+        output=$(eval "$cmd" 2>/dev/null)
+        if [ -n "$output" ]; then
+            echo "$output" > "$cache_file"
+            eval "$output"
+        fi
+    fi
+}
+
 function share_history {
     history -a
     history -c
@@ -68,8 +93,7 @@ alias gpl='git pull --prune'
 
 _bp_log "alias"
 
-#BREW_PREFIX_DIR=$(/opt/homebrew/bin/brew --prefix)
-# Hardcoded to avoid slow `brew --prefix` call
+# Hardcoded to avoid slow `brew --prefix` call (~200-800ms)
 if [ -d /opt/homebrew ]; then
     BREW_PREFIX_DIR=/opt/homebrew
 elif [ -d /usr/local/Homebrew ]; then
@@ -169,7 +193,7 @@ fi
 #############################
 # TODO: Remove fzf.bash
 #[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-eval "$($BREW_PREFIX_DIR/bin/fzf --bash)"
+__cached_eval "fzf --bash"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 70% --border'
 
@@ -259,11 +283,9 @@ if [ -d /usr/local/bin ]; then
     _PATH=$_PATH:/usr/local/bin
 fi
 
-# git completion (source after fzf to override fzf's generic path completion)
-if [ -r "$BREW_PREFIX_DIR/etc/bash_completion.d/git-completion.bash" ]; then
-    source "$BREW_PREFIX_DIR/etc/bash_completion.d/git-completion.bash"
-elif [ -r "$BREW_PREFIX_DIR/share/bash-completion/completions/git" ]; then
-    source "$BREW_PREFIX_DIR/share/bash-completion/completions/git"
+# Only load git-completion individually if bash_completion.sh was not already loaded
+if [ -d "$BASH_COMPLETION_DIR" ] && ! declare -f __git_complete &>/dev/null; then
+    source "$BASH_COMPLETION_DIR/git-completion.bash"
 fi
 
 _bp_log "completion (git)"
@@ -336,16 +358,24 @@ fi
 
 # rbenv
 if [ -f /opt/homebrew/bin/rbenv ]; then
-    eval "$(/opt/homebrew/bin/rbenv init - bash)"
+    __cached_eval "/opt/homebrew/bin/rbenv init - bash"
     _PATH=$_PATH:$HOME/.rbenv/shims
 fi
 
 _bp_log "rbenv"
 
-# JDK
-JAVA_HOME=$(/usr/libexec/java_home -v "1.8")
-if [ -d "$JAVA_HOME" ]; then
-    _PATH=$_PATH:$JAVA_HOME/bin
+# JDK (lazy - only resolve JAVA_HOME when needed)
+java_home() {
+    if [ -z "$JAVA_HOME" ]; then
+        JAVA_HOME=$(/usr/libexec/java_home -v "1.8" 2>/dev/null)
+        export JAVA_HOME
+        [ -d "$JAVA_HOME" ] && export PATH="$JAVA_HOME/bin:$PATH"
+    fi
+    echo "$JAVA_HOME"
+}
+# Add common JDK path without running java_home command
+if [ -d "/Library/Java/JavaVirtualMachines" ]; then
+    _PATH=$_PATH:/Library/Java/JavaVirtualMachines/*/Contents/Home/bin
 fi
 
 _bp_log "JDK (java_home)"
@@ -360,30 +390,50 @@ if [ -d ~/.pub-cache/bin/ ]; then
     _PATH=$_PATH:~/.pub-cache/bin
 fi
 
-# nvm
+# nvm (lazy loaded - nvm.sh is very slow ~200-500ms)
 export NVM_DIR="$HOME/.nvm"
+
+# Find nvm.sh path once without loading it
+if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
+    __NVM_SH="/opt/homebrew/opt/nvm/nvm.sh"
+    __NVM_COMPLETION="/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+elif [ -s "/usr/local/opt/nvm/nvm.sh" ]; then
+    __NVM_SH="/usr/local/opt/nvm/nvm.sh"
+    __NVM_COMPLETION="/usr/local/opt/nvm/etc/bash_completion.d/nvm"
+fi
+
+__load_nvm() {
+    if [ -n "$__NVM_SH" ]; then
+        unset -f nvm node npm npx
+        . "$__NVM_SH"
+        [ -s "$__NVM_COMPLETION" ] && . "$__NVM_COMPLETION"
+        [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+        unset __NVM_SH __NVM_COMPLETION
+    fi
+}
+
+# Lazy-load: create placeholder functions that load nvm on first use
+nvm() { __load_nvm; nvm "$@"; }
+node() { __load_nvm; node "$@"; }
+npm() { __load_nvm; npm "$@"; }
+npx() { __load_nvm; npx "$@"; }
+
 function detect_nvmrc() {
     if [[ $PWD == $PREV_PWD ]]; then
         return
     fi
-
     PREV_PWD=$PWD
-    [[ -f ".nvmrc" ]] && nvm use
+    if [[ -f ".nvmrc" ]]; then
+        __load_nvm
+        nvm use
+    fi
 }
-
-if [ -s "/usr/local/opt/nvm/nvm.sh" ]; then
-    . "/usr/local/opt/nvm/nvm.sh"
+if [ -n "$__NVM_SH" ]; then
     PROMPT_COMMAND="$PROMPT_COMMAND;detect_nvmrc"
 fi
-
-if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
-    . "/opt/homebrew/opt/nvm/nvm.sh"
-    PROMPT_COMMAND="$PROMPT_COMMAND;detect_nvmrc"
-fi
-
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 _bp_log "nvm"
+
 
 # # asdf
 # if [ -x "$BREW_PREFIX_DIR/bin/asdf" ]; then
@@ -393,7 +443,7 @@ _bp_log "nvm"
 
 # mise
 if [ -x "$BREW_PREFIX_DIR/bin/mise" ]; then
-    eval "$($BREW_PREFIX_DIR/bin/mise activate bash)"
+    __cached_eval "$BREW_PREFIX_DIR/bin/mise activate bash"
     . "$BREW_PREFIX_DIR/etc/bash_completion.d/mise"
 fi
 
@@ -401,7 +451,7 @@ _bp_log "mise"
 
 # wtp
 if [ -x "$BREW_PREFIX_DIR/bin/wtp" ]; then
-    eval "$(wtp shell-init bash)"
+    __cached_eval "wtp shell-init bash"
 fi
 
 _bp_log "wtp"
@@ -431,14 +481,9 @@ if [ -n "$_PATH" ]; then
 fi
 
 # direnv
-eval "$(direnv hook bash)"
+__cached_eval "direnv hook bash"
 
 _bp_log "direnv"
-
-# This loads nvm bash_completion
-if [ -s "$NVM_DIR/bash_completion" ]; then
-    . "$NVM_DIR/bash_completion"
-fi
 
 _bp_log "nvm bash_completion"
 

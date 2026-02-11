@@ -68,7 +68,13 @@ alias gpl='git pull --prune'
 
 _bp_log "alias"
 
-BREW_PREFIX_DIR=$(/opt/homebrew/bin/brew --prefix)
+#BREW_PREFIX_DIR=$(/opt/homebrew/bin/brew --prefix)
+# Hardcoded to avoid slow `brew --prefix` call
+if [ -d /opt/homebrew ]; then
+    BREW_PREFIX_DIR=/opt/homebrew
+elif [ -d /usr/local/Homebrew ]; then
+    BREW_PREFIX_DIR=/usr/local
+fi
 BREW_CASKROOM_DIR=$BREW_PREFIX_DIR/Caskroom
 HOMEBREW_NO_AUTO_UPDATE=1
 

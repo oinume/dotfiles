@@ -272,6 +272,13 @@ fi
 
 _bp_log "completion (docker)"
 
+# gh completion
+if command -v gh &> /dev/null; then
+    eval "$(gh completion -s bash)"
+fi
+
+_bp_log "completion (gh)"
+
 #############################
 # Go
 #############################

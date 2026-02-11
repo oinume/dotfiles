@@ -80,7 +80,6 @@ _bp_log "brew --prefix"
 _bp_log ".bash_local"
 
 # bash-completion
-## TODO: load file in /opt/homebrew/etc/bash_completion.d/
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 

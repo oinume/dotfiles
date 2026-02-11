@@ -1,0 +1,15 @@
+name: surugaya
+root: ~/workspace/surugaya/fujiyama
+windows:
+  - claude:
+      layout: main-vertical
+      panes:
+        - claude:
+  - backend:
+      layout: main-vertical
+      panes:
+        - backend:
+  - workspace:
+      layout: main-vertical
+      panes:
+        - workspace:

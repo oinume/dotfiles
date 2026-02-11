@@ -256,6 +256,16 @@ fi
 
 _bp_log "completion (git)"
 
+# docker completion
+if [ -r "$BREW_PREFIX_DIR/etc/bash_completion.d/docker" ]; then
+    source "$BREW_PREFIX_DIR/etc/bash_completion.d/docker"
+fi
+if [ -r "$BREW_PREFIX_DIR/etc/bash_completion.d/docker-compose" ]; then
+    source "$BREW_PREFIX_DIR/etc/bash_completion.d/docker-compose"
+fi
+
+_bp_log "completion (docker)"
+
 # Go
 if [ -d /opt/homebrew/opt/go/libexec ]; then
     export GOROOT=/opt/homebrew/opt/go/libexec

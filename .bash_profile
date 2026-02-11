@@ -273,12 +273,18 @@ fi
 
 _bp_log "completion (docker)"
 
+#############################
 # Go
+#############################
 if [ -d /opt/homebrew/opt/go/libexec ]; then
     export GOROOT=/opt/homebrew/opt/go/libexec
     export GOPATH=$HOME/go
     _PATH=$_PATH:$GOPATH/bin:$GOROOT/bin
 fi
+if command -v gocomplete &> /dev/null; then
+    complete -C "$(command -v gocomplete)" go
+fi
+_bp_log "completion (go)"
 
 
 #############################

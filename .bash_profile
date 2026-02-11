@@ -163,7 +163,7 @@ fi
 #############################
 # TODO: Remove fzf.bash
 #[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-eval "$(fzf --bash)"
+eval "$($BREW_PREFIX_DIR/bin/fzf --bash)"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 70% --border'
 

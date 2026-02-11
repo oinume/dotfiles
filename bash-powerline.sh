@@ -16,6 +16,9 @@ __powerline() {
     readonly SYMBOL_GIT_PUSH='↑'
     readonly SYMBOL_GIT_PULL='↓'
 
+    # Check path-shrinker once at init, not on every prompt
+    __powerline_path_shrinker=$(command -v path-shrinker 2>/dev/null)
+
     if [[ -z "$PS_SYMBOL" ]]; then
       case "$(uname)" in
           Darwin)   PS_SYMBOL='';;
@@ -83,8 +86,7 @@ __powerline() {
         fi
 
         #PS1="\w$git$symbol"
-        __path_shrinker=$(which path-shrinker)
-        if [ "$__path_shrinker" != "" ]; then
+        if [ -n "$__powerline_path_shrinker" ]; then
             __cwd=$(path-shrinker -fish)
         else
             __cwd='\w'

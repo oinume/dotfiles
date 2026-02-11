@@ -80,7 +80,6 @@ _bp_log "brew --prefix"
 _bp_log ".bash_local"
 
 # bash-completion
-## TODO: load file in /opt/homebrew/etc/bash_completion.d/
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
@@ -262,16 +261,6 @@ elif [ -r "$BREW_PREFIX_DIR/share/bash-completion/completions/git" ]; then
 fi
 
 _bp_log "completion (git)"
-
-# docker completion
-if [ -r "$BREW_PREFIX_DIR/etc/bash_completion.d/docker" ]; then
-    source "$BREW_PREFIX_DIR/etc/bash_completion.d/docker"
-fi
-if [ -r "$BREW_PREFIX_DIR/etc/bash_completion.d/docker-compose" ]; then
-    source "$BREW_PREFIX_DIR/etc/bash_completion.d/docker-compose"
-fi
-
-_bp_log "completion (docker)"
 
 #############################
 # Go

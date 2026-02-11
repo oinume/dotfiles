@@ -243,14 +243,15 @@ _bp_log "tmuxinator"
 #############################
 # completion
 #############################
-BASH_COMPLETION_DIR=/usr/local/etc/bash_completion.d
-
 if [ -d /usr/local/bin ]; then
     _PATH=$_PATH:/usr/local/bin
 fi
 
-if [ -d $BASH_COMPLETION_DIR ]; then
-    source $BASH_COMPLETION_DIR/git-completion.bash
+# git completion (source after fzf to override fzf's generic path completion)
+if [ -r "$BREW_PREFIX_DIR/etc/bash_completion.d/git-completion.bash" ]; then
+    source "$BREW_PREFIX_DIR/etc/bash_completion.d/git-completion.bash"
+elif [ -r "$BREW_PREFIX_DIR/share/bash-completion/completions/git" ]; then
+    source "$BREW_PREFIX_DIR/share/bash-completion/completions/git"
 fi
 
 _bp_log "completion (git)"

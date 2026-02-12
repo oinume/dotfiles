@@ -72,7 +72,7 @@
       "Bash(git checkout *)",
       "Bash(git merge *)",
       "Bash(git push *)",
-      "Bash(git rebase *)",
+      "Bash(git rebase *)"
     ]
   }
 }

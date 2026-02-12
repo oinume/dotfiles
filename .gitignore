@@ -1,2 +1,3 @@
 .DS_Store
 .tmuxinator/work-*.yml
+.claude/settings.local.json

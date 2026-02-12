@@ -13,7 +13,7 @@
   },
   "alwaysThinkingEnabled": true,
   "plansDirectory": ".mine/plans",
- "permissions": {
+  "permissions": {
     "defaultMode": "acceptEdits",
     "allow": [
       "Bash(mkdir *)",

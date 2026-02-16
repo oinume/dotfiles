@@ -21,14 +21,13 @@ brew "ghq"
 brew "gist"
 brew "git"
 brew "go"
-brew "go@1.23", link: false
 brew "go@1.24", link: false
+brew "go@1.25", link: false
 brew "gopls"
 brew "goreleaser"
 brew "graphicsmagick"
 brew "graphviz"
 brew "htop"
-brew "hub"
 brew "imagemagick"
 brew "jid"
 brew "jq"

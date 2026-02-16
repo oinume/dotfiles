@@ -45,7 +45,7 @@
       "WebFetch(domain:*.npmjs.com)",
       "WebFetch(domain:*.npmjs.org)",
       "WebFetch(domain:www.apollographql.com)",
-      "WebSearch",
+      "WebSearch"
     ],
     "deny": [
       "Bash(sudo *)",
@@ -80,7 +80,7 @@
       "Bash(git push -f*)",
       "Bash(git rebase *)"
     ],
-    "defaultMode": "acceptEdits"
+    "defaultMode": "plan"
   },
   "statusLine": {
     "type": "command",

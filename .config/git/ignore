@@ -6,3 +6,5 @@
 
 **/.claude/settings.local.json
 worktrees/
+.wt/
+.playwright-cli/

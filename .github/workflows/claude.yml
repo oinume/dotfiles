@@ -24,7 +24,7 @@ jobs:
       issues: read
       id-token: write
       actions: read
-    uses: oinume/shared-workflows/.github/workflows/claude.yml@main
+    uses: oinume/shared-workflows/.github/workflows/shared-claude.yml@main
     with:
       claude_args: |
         --allowedTools "Agent"

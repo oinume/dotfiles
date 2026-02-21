@@ -223,7 +223,7 @@ FZF-EOF"
 }
 
 # fco - checkout git branch/tag
-fco() {
+function fco() {
     local tags branches target
     branches=$(
       git --no-pager branch --all \
@@ -240,7 +240,7 @@ fco() {
 
 
 # fco_preview - checkout git branch/tag, with a preview showing the commits between the tag/branch and HEAD
-fco_preview() {
+function fco_preview() {
     local tags branches target
     branches=$(
       git --no-pager branch --all \
@@ -257,11 +257,16 @@ fco_preview() {
 
 # fghpr - list pull requests with search query, then open selected pull-request with browser
 # Use like `fghpr -A '@me' -s closed`
-fghpr() {
+function fghpr() {
     gh pr list "$@" --json number,title -q '.[] | "\(.number) \(.title)"' \
     | fzf --delimiter=' ' --with-nth=2.. \
     | awk '{print $1}' \
     | xargs -I {} gh pr view -w {}
+}
+
+# fwt
+function fwt() {
+    cd $(git-wt | fzf --header-lines=1 | awk '{if ($1 == "*") print $2; else print $1}')
 }
 
 #############################

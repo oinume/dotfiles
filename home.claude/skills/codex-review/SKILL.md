@@ -3,7 +3,7 @@ allowed-tools: Bash(codex review:*)
 description: Run code review using codex review command
 ---
 
-Run `codex review` to review code changes based on the user's request. Source with `. ~/.bash_local` then check `lcodex` function is available. If `lcodex` is available, use it instead of `codex`.
+Run `codex review` to review code changes based on the user's request. Source with `source ~/.bash_local` then check `lcodex` function is available. If `lcodex` is available, use it instead of `codex`.
 
 ### Usage
 

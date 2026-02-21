@@ -20,6 +20,7 @@ brew "gh"
 brew "ghq"
 brew "gist"
 brew "git"
+brew "git-wt"
 brew "go"
 brew "go@1.24", link: false
 brew "go@1.25", link: false

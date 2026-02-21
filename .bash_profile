@@ -432,6 +432,13 @@ fi
 
 _bp_log "wtp"
 
+# git-wt
+if [ -d "$BREW_PREFIX_DIR/Cellar/git-wt" ]; then
+    __cached_eval "$(git wt --init bash)"
+fi
+
+_bp_log "git-wt"
+
 # dart
 if [ -d /usr/local/opt/ruby ]; then
     _PATH=$_PATH:$HOME/.pub-cache/bin

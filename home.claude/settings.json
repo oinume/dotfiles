@@ -86,7 +86,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "input=$(cat); cwd=$(echo \"$input\" | jq -r '.workspace.current_dir'); COLOR_CWD='\\033[0;34m'; COLOR_GIT='\\033[0;36m'; COLOR_SUCCESS='\\033[0;32m'; RESET='\\033[m'; SYMBOL_BRANCH=''; SYMBOL_MOD='*'; SYMBOL_PUSH='↑'; SYMBOL_PULL='↓'; PS_SYMBOL=''; get_git_info() { git -C \"$cwd\" rev-parse --git-dir >/dev/null 2>&1 || return; ref=$(git -C \"$cwd\" symbolic-ref --short HEAD 2>/dev/null); [[ -n \"$ref\" ]] && ref=\"$SYMBOL_BRANCH$ref\" || ref=$(git -C \"$cwd\" describe --tags --always 2>/dev/null); [[ -n \"$ref\" ]] || return; marks=\"\"; while IFS= read -r line; do if [[ $line =~ ^## ]]; then [[ $line =~ ahead\\ ([0-9]+) ]] && marks+=\" $SYMBOL_PUSH${BASH_REMATCH[1]}\"; [[ $line =~ behind\\ ([0-9]+) ]] && marks+=\" $SYMBOL_PULL${BASH_REMATCH[1]}\"; else marks=\"$SYMBOL_MOD$marks\"; break; fi; done < <(git -C \"$cwd\" status --porcelain --branch 2>/dev/null); printf \" %s%s\" \"$ref\" \"$marks\"; }; if command -v path-shrinker >/dev/null 2>&1; then short_path=$(echo \"$cwd\" | path-shrinker -fish); else short_path=\"${cwd/#$HOME/~}\"; fi; git_info=$(get_git_info); printf \"${COLOR_CWD}%s${RESET}${COLOR_GIT}%s${RESET} ${COLOR_SUCCESS}%s${RESET}\" \"$short_path\" \"$git_info\" \"$PS_SYMBOL\""
+    "command": "bash /Users/oinume/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,

@@ -5,6 +5,8 @@
   },
   "permissions": {
     "allow": [
+      "Bash(codex *)",
+      "Bash(lcodex *)",
       "Bash(mkdir *)",
       "Bash(touch *)",
       "Bash(ls *)",
@@ -38,6 +40,7 @@
       "Bash(gh pr *)",
       "Bash(go build:*)",
       "Bash(go env *)",
+      "Bash(go mod tidy)",
       "Bash(go test *)",
       "Bash(go tool *)",
       "Bash(go vet *)",

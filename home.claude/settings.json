@@ -17,6 +17,7 @@
       "Bash(echo *)",
       "Bash(lsof*)",
       "Bash(nc *)",
+      "Bash(source *)",
       "Bash(which:*)",
       "Bash(node -e:*)",
       "Bash(npm ls:*)",

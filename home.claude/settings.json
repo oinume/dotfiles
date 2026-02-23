@@ -17,6 +17,8 @@
       "Bash(grep *)",
       "Bash(find *)",
       "Bash(echo *)",
+      "Bash(tail:*)",
+      "Bash(head:*)",
       "Bash(lsof*)",
       "Bash(nc *)",
       "Bash(source *)",
@@ -87,6 +89,28 @@
       "Bash(git rebase *)"
     ],
     "defaultMode": "plan"
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"cwd\": \"'\"$(pwd)\"'\", \"notification_type\": \"stop\"}' | ~/.claude/notify.sh"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/notify.sh"
+          }
+        ]
+      }
+    ]
   },
   "statusLine": {
     "type": "command",

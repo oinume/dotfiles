@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# You need to allow osascript to notify, see below.
+# https://qiita.com/tanaka4410/items/e6cfef46169273ed3efe
+
 input=$(cat)
 cwd=$(echo "$input" | jq -r '.cwd')
 project=$(basename "$cwd")

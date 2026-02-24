@@ -21,15 +21,15 @@ send_notification() {
 
 case "${notification_type}" in
   "permission_prompt")
-    send_notification "許可待ち" "Ping"
+    send_notification "🔑 permission prompt" "Ping"
     ;;
   "idle_prompt"|"elicitation_dialog")
-    send_notification "入力待ち" "Purr"
+    send_notification "🙋 idle prompt" "Purr"
     ;;
   "stop")
-    send_notification "タスク完了" "Glass"
+    send_notification "✅ done" "Glass"
     ;;
   *)
-    send_notification "通知" ""
+    send_notification "🔔 notification" ""
     ;;
 esac

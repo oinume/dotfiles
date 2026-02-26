@@ -1,0 +1,19 @@
+version: "1.0"
+
+defaults:
+  # Base directory for worktrees (relative to project root)
+  base_dir: "../.wt-repo"
+
+hooks:
+  post_create:
+    # Copy gitignored files from main worktree to new worktree
+    # Note: 'from' is relative to main worktree, 'to' is relative to new worktree
+#    - type: copy
+#      from: ".env" # Copy actual .env file (gitignored)
+#      to: ".env"
+
+    # Execute commands in the new worktree
+#    - type: command
+#      command: "npm install"
+#      env:
+#        NODE_ENV: "development"

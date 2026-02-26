@@ -39,6 +39,7 @@
       "Bash(git diff:*)",
       "Bash(git fetch:*)",
       "Bash(gh api *)",
+      "Bash(gh issue view:*)",
       "Bash(gh pr *)",
       "Bash(go build:*)",
       "Bash(go env *)",

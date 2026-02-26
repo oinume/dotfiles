@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# You need to allow osascript to notify, see below.
-# https://qiita.com/tanaka4410/items/e6cfef46169273ed3efe
+# macOS notification tool for Claude Code
+# Need to install terminal-notifier with homebrew and link like below
+# ln -s /opt/homebrew/Cellar/terminal-notifier/2.0.0/terminal-notifier.app /Applications/terminal-notifier.app
 
 input=$(cat)
 cwd=$(echo "$input" | jq -r '.cwd')
@@ -12,11 +13,11 @@ send_notification() {
   local message="$1"
   local sound="$2"
 
-  local args="display notification \"${message}\" with title \"Claude Code\" subtitle \"${project}\""
+  local args=(-title "Claude Code" -subtitle "${project}" -message "${message}" -sender "com.googlecode.iterm2")
   if [[ -n "${sound}" ]]; then
-    args="${args} sound name \"${sound}\""
+    args+=(-sound "${sound}")
   fi
-  osascript -e "${args}"
+  terminal-notifier "${args[@]}"
 }
 
 case "${notification_type}" in

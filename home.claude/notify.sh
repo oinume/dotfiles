@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# set -eux
+
 # macOS notification tool for Claude Code
 # Need to install terminal-notifier with homebrew and link like below
 # ln -s /opt/homebrew/Cellar/terminal-notifier/2.0.0/terminal-notifier.app /Applications/terminal-notifier.app
@@ -13,7 +15,7 @@ send_notification() {
   local message="$1"
   local sound="$2"
 
-  local args=(-title "Claude Code" -subtitle "${project}" -message "${message}" -sender "com.googlecode.iterm2")
+  local args=(-title "Claude Code" -subtitle "${project}" -message "${message}")
   if [[ -n "${sound}" ]]; then
     args+=(-sound "${sound}")
   fi

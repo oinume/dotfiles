@@ -8,3 +8,5 @@
 worktrees/
 .wt/
 .playwright-cli/
+.playwright-mcp/
+logs/

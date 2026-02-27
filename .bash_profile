@@ -264,9 +264,13 @@ function fghpr() {
     | xargs -I {} gh pr view -w {}
 }
 
-# fwt
-function fwt() {
-    cd $(git-wt | fzf --header-lines=1 | awk '{if ($1 == "*") print $2; else print $1}')
+# fwtp - change directory to a wtp worktree
+function fwtp() {
+    local branch
+    branch=$(wtp list | fzf --header-lines=2 | awk '{print $2}')
+    if [ -n "$branch" ]; then
+        wtp cd "$branch"
+    fi
 }
 
 #############################

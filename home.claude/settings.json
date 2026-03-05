@@ -119,5 +119,9 @@
     "playwright@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
-  "plansDirectory": ".mine/plans"
+  "plansDirectory": ".mine/plans",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline-command.sh"
+  }
 }

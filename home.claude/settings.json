@@ -41,6 +41,7 @@
       "Bash(gh api *)",
       "Bash(gh issue view:*)",
       "Bash(gh pr *)",
+      "Bash(gh run view:*)",
       "Bash(go build:*)",
       "Bash(go env *)",
       "Bash(go mod tidy)",

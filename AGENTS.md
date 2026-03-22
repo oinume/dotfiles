@@ -10,7 +10,7 @@ Personal dotfiles repository managing configuration for bash, git, tmux, vim/edi
 ## Setup
 
 ```bash
-git clone --recurse-submodules git@github.com:oinume/dotfiles.git
+git clone git@github.com:oinume/dotfiles.git
 ./setup.sh        # Symlinks dotfiles to $HOME
 brew bundle install  # Install Homebrew packages from Brewfile
 ```

@@ -4,4 +4,4 @@ set -eux
 
 #npm set progress=false
 npm install -g npm@latest
-npm install -g npm-check-updates
+npm install -g npm-check-updates@latest

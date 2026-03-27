@@ -15,6 +15,7 @@ REPOS=(
   "https://github.com/obra/superpowers"
   "https://github.com/microsoft/playwright-cli"
   "https://github.com/anthropics/skills#skill-creator"
+  "https://github.com/browser-use/browser-use#browser-use"
 )
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"

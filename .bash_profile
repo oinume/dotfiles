@@ -431,14 +431,6 @@ fi
 #     . "$BREW_PREFIX_DIR/etc/bash_completion.d/asdf"
 # fi
 
-# mise
-if [ -x "$BREW_PREFIX_DIR/bin/mise" ]; then
-    __cached_eval "$BREW_PREFIX_DIR/bin/mise activate bash"
-    . "$BREW_PREFIX_DIR/etc/bash_completion.d/mise"
-fi
-
-_bp_log "mise"
-
 # wtp
 if [ -x "$BREW_PREFIX_DIR/bin/wtp" ]; then
     __cached_eval "wtp shell-init bash"
@@ -459,6 +451,14 @@ fi
 if [ -n "$_PATH" ]; then
     export PATH="$_PATH:$PATH"
 fi
+
+# mise (must come after PATH export so __MISE_ORIG_PATH includes /opt/homebrew/bin)
+if [ -x "$BREW_PREFIX_DIR/bin/mise" ]; then
+    __cached_eval "$BREW_PREFIX_DIR/bin/mise activate bash"
+    . "$BREW_PREFIX_DIR/etc/bash_completion.d/mise"
+fi
+
+_bp_log "mise"
 
 # direnv
 __cached_eval "direnv hook bash"

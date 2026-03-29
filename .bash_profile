@@ -353,6 +353,11 @@ function gcloud_set_project() {
     gcloud config set project $1
 }
 
+# Homebrew (/opt/homebrew)
+if [ -d /opt/homebrew ]; then
+    _PATH=/opt/homebrew/bin:$_PATH
+fi
+
 # JetBrains
 _PATH=$_PATH:/Users/oinume/Library/Application\ Support/JetBrains/Toolbox/scripts
 
@@ -418,7 +423,7 @@ fi
 
 # [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
-_bp_log "nvm"
+# _bp_log "nvm"
 
 # # asdf
 # if [ -x "$BREW_PREFIX_DIR/bin/asdf" ]; then
@@ -441,19 +446,9 @@ fi
 
 _bp_log "wtp"
 
-# dart
-if [ -d /usr/local/opt/ruby ]; then
-    _PATH=$_PATH:$HOME/.pub-cache/bin
-fi
-
 # antigravity
 if [ -d ~/.antigravity/antigravity/bin ]; then
     _PATH=$_PATH:$HOME/.antigravity/antigravity/bin
-fi
-
-# Homebrew (/opt/homebrew)
-if [ -d /opt/homebrew ]; then
-    _PATH=/opt/homebrew/bin:$_PATH
 fi
 
 if [ -d $HOME/.local/bin ]; then

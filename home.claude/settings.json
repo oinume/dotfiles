@@ -128,5 +128,6 @@
     }
   },
   "alwaysThinkingEnabled": true,
-  "plansDirectory": ".mine/plans"
+  "plansDirectory": ".mine/plans",
+  "cleanupPeriodDays": 90
 }

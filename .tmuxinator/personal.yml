@@ -13,3 +13,7 @@ windows:
       layout: main-vertical
       panes:
         - cd ~/workspace/oinume/terraforms
+  - blog:
+      layout: main-vertical
+      panes:
+        - cd ~/workspace/oinume/blog

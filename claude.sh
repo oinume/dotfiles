@@ -25,6 +25,11 @@ for entry in "$DOTFILES_DIR"/home.claude/plugins/*; do
         rm -rf "$target"
         echo "Removed $target"
     fi
-    ln -s "$entry" "$target"
-    echo "Linked $target -> $entry"
+    if [ "$name" = "installed_plugins.json" ]; then
+        sed "s|__HOME__|$HOME|g" "$entry" > "$target"
+        echo "Expanded $target from template"
+    else
+        ln -s "$entry" "$target"
+        echo "Linked $target -> $entry"
+    fi
 done

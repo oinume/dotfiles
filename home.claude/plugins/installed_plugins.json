@@ -4,7 +4,7 @@
     "gopls-lsp@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/oinume/.claude/plugins/cache/claude-plugins-official/gopls-lsp/1.0.0",
+        "installPath": "__HOME__/.claude/plugins/cache/claude-plugins-official/gopls-lsp/1.0.0",
         "version": "1.0.0",
         "installedAt": "2026-01-05T04:30:36.230Z",
         "lastUpdated": "2026-01-05T04:33:12.101Z",
@@ -14,7 +14,7 @@
     "playwright@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/oinume/.claude/plugins/cache/claude-plugins-official/playwright/unknown",
+        "installPath": "__HOME__/.claude/plugins/cache/claude-plugins-official/playwright/unknown",
         "version": "unknown",
         "installedAt": "2026-01-15T02:18:50.003Z",
         "lastUpdated": "2026-04-08T04:53:24.201Z",
@@ -24,7 +24,7 @@
     "phpstorm-plugin@phpstorm-marketplace": [
       {
         "scope": "user",
-        "installPath": "/Users/oinume/.claude/plugins/cache/phpstorm-marketplace/phpstorm-plugin/1.0.0",
+        "installPath": "__HOME__/.claude/plugins/cache/phpstorm-marketplace/phpstorm-plugin/1.0.0",
         "version": "1.0.0",
         "installedAt": "2026-03-30T07:54:47.908Z",
         "lastUpdated": "2026-03-30T07:54:47.908Z",
@@ -34,7 +34,7 @@
     "codex@openai-codex": [
       {
         "scope": "user",
-        "installPath": "/Users/oinume/.claude/plugins/cache/openai-codex/codex/1.0.1",
+        "installPath": "__HOME__/.claude/plugins/cache/openai-codex/codex/1.0.1",
         "version": "1.0.1",
         "installedAt": "2026-03-31T05:17:22.032Z",
         "lastUpdated": "2026-03-31T05:17:22.032Z",

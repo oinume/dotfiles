@@ -94,6 +94,8 @@ alias gpl='git pull --prune'
 
 _bp_log "alias"
 
+export EDITOR=code
+
 #BREW_PREFIX_DIR=$(/opt/homebrew/bin/brew --prefix)
 # Hardcoded to avoid slow `brew --prefix` call
 if [ -d /opt/homebrew ]; then

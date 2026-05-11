@@ -46,4 +46,5 @@
     "terminal.integrated.defaultProfile.osx": "bash (2)",
     "workbench.tree.indent": 20,
     "extensions.ignoreRecommendations": true,
+    "explorer.confirmDelete": false,
 }

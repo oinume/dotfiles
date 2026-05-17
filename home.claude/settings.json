@@ -1,5 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "cleanupPeriodDays": 90,
   "env": {
     "CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS": "1"
   },
@@ -128,6 +129,7 @@
     }
   },
   "alwaysThinkingEnabled": true,
+  "effortLevel": "high",
   "plansDirectory": ".mine/plans",
-  "cleanupPeriodDays": 90
+  "skipAutoPermissionPrompt": true
 }

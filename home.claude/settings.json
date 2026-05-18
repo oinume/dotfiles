@@ -129,7 +129,6 @@
     }
   },
   "alwaysThinkingEnabled": true,
-  "effortLevel": "high",
   "plansDirectory": ".mine/plans",
   "skipAutoPermissionPrompt": true
 }

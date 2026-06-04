@@ -10,6 +10,11 @@ for file in .bash* .fzf.* .z* .gitconfig .psqlrc .tmux.conf Brewfile .config/git
     ln -s $PWD/$file ~/$file
 done
 
+# Karabiner-Elements
+mkdir -p ~/.config/karabiner
+rm -i ~/.config/karabiner/karabiner.json
+ln -s $PWD/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
+
 # Workaround for "The operation couldn’t be completed. Unable to locate a Java Runtime."
 sudo ln -sfn $(brew --prefix)/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 

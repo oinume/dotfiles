@@ -6,7 +6,8 @@ fi
 
 mkdir -p ~/.config/git
 mkdir -p ~/.config/karabiner
-for file in .bash* .fzf.* .z* .gitconfig .psqlrc .tmux.conf Brewfile .config/git/ignore .config/karabiner/karabiner.json; do
+mkdir -p ~/.config/cmux
+for file in .bash* .fzf.* .z* .gitconfig .psqlrc .tmux.conf Brewfile .config/git/ignore .config/karabiner/karabiner.json .config/cmux/cmux.json; do
     rm -i ~/$file
     ln -s $PWD/$file ~/$file
 done

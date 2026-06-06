@@ -64,7 +64,6 @@
       "Bash(git rebase *)",
       "Read(**/*token*)",
       "Read(**/*key*)",
-      "Bash(curl:*)",
       "Bash(wget:*)",
       "Bash(rm -rf *)",
       "Bash(rm -rf /)",

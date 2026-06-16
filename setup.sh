@@ -7,15 +7,9 @@ fi
 mkdir -p ~/.config/git
 mkdir -p ~/.config/karabiner
 mkdir -p ~/.config/cmux
-mkdir -p ~/.codex
 for file in .bash* .fzf.* .z* .gitconfig .psqlrc .tmux.conf Brewfile .config/git/ignore .config/karabiner/karabiner.json .config/cmux/cmux.json; do
     rm -i ~/$file
     ln -s $PWD/$file ~/$file
-done
-
-for file in AGENTS.md; do
-    rm -i ~/.codex/$file
-    ln -s $PWD/home.codex/$file ~/.codex/$file
 done
 
 # Workaround for "The operation couldn’t be completed. Unable to locate a Java Runtime."

@@ -22,6 +22,7 @@ brew bundle install  # Install Homebrew packages from Brewfile
 - **`.bash_profile`** — Main shell config. Initializes Homebrew, fzf, mise, direnv, Go, GCloud SDK, pnpm, and bash-powerline prompt. Uses `__cached_eval` to cache slow `eval "$(cmd)"` calls for faster startup. Contains custom fzf functions (`fbr`, `fshow`, `fco`, `fco_preview`, `fghpr`). Supports startup profiling via `BASH_PROFILE_PROFILING=1`. Note: rbenv, NVM, and asdf are currently commented out.
 - **`setup.sh`** — Installation script that symlinks dotfiles to `$HOME`.
 - **`claude.sh`** — Symlinks Claude Code configs from `home.claude/` to `~/.claude/`.
+- **`codex.sh`** — Symlinks Codex configs from `home.codex/` to `~/.codex/`.
 - **`Brewfile`** — Homebrew dependencies (formulae, casks, VS Code extensions).
 - **`macos.sh`** — macOS system defaults (Finder, keyboard, Dock preferences).
 - **`.gitconfig`** — Git config with SSH signing via 1Password (`op-ssh-sign`), ghq root at `~/workspace`, and custom aliases (`amend`, `cleanup-branches`, `log-fancy`, etc.).
@@ -29,6 +30,7 @@ brew bundle install  # Install Homebrew packages from Brewfile
 - **`bash-powerline.sh`** — Custom bash prompt with git branch display.
 - **`vscode/`** — VS Code settings, keybindings, and tasks (Go with gopls/gofumpt).
 - **`home.claude/`** — Claude Code configuration (`settings.json`, custom commands in `commands/`).
+- **`home.codex/`** — Codex configuration and global instructions (`AGENTS.md`).
 - **`.github/workflows/`** — GitHub Actions workflows (e.g., `claude.yml`).
 - **`.config/git/ignore`** — Global git ignore patterns.
 - **`go.sh`** — Go tool installation script.
@@ -44,5 +46,6 @@ brew bundle install  # Install Homebrew packages from Brewfile
 - The `bash-it/` directory exists but bash-it is currently disabled in `.bash_profile`.
 - When adding a new dotfile, add it to `setup.sh`'s symlink loop and place it in the repo root.
 - Claude Code configs go in `home.claude/` and are symlinked to `~/.claude/` by `claude.sh`.
+- Codex configs go in `home.codex/` and are symlinked to `~/.codex/` by `codex.sh`.
 - Git commits are signed with SSH keys via 1Password.
 - Use `__cached_eval` in `.bash_profile` for slow `eval "$(cmd)"` calls. It caches command output in `~/.cache/bash_startup/` and invalidates when the binary's mtime changes.

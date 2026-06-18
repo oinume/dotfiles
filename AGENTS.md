@@ -24,6 +24,7 @@ brew bundle install  # Install Homebrew packages from Brewfile
 - **`claude.sh`** — Symlinks Claude Code configs from `home.claude/` to `~/.claude/`.
 - **`claude-plugins.sh`** — Installs Claude Code marketplaces and plugins via the `claude` CLI.
 - **`codex.sh`** — Symlinks Codex configs from `home.codex/` to `~/.codex/`.
+- **`codex-plugins.sh`** — Installs Codex plugins (e.g. superpowers) via the `codex` CLI.
 - **`Brewfile`** — Homebrew dependencies (formulae, casks, VS Code extensions).
 - **`macos.sh`** — macOS system defaults (Finder, keyboard, Dock preferences).
 - **`.gitconfig`** — Git config with SSH signing via 1Password (`op-ssh-sign`), ghq root at `~/workspace`, and custom aliases (`amend`, `cleanup-branches`, `log-fancy`, etc.).
@@ -47,6 +48,6 @@ brew bundle install  # Install Homebrew packages from Brewfile
 - The `bash-it/` directory exists but bash-it is currently disabled in `.bash_profile`.
 - When adding a new dotfile, add it to `setup.sh`'s symlink loop and place it in the repo root.
 - Claude Code configs go in `home.claude/` and are symlinked to `~/.claude/` by `claude.sh`. Marketplaces and plugins are installed separately by `claude-plugins.sh`.
-- Codex configs go in `home.codex/` and are symlinked to `~/.codex/` by `codex.sh`.
+- Codex configs go in `home.codex/` and are symlinked to `~/.codex/` by `codex.sh`. Plugins are installed separately by `codex-plugins.sh`.
 - Git commits are signed with SSH keys via 1Password.
 - Use `__cached_eval` in `.bash_profile` for slow `eval "$(cmd)"` calls. It caches command output in `~/.cache/bash_startup/` and invalidates when the binary's mtime changes.

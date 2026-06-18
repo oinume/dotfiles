@@ -25,3 +25,15 @@ Install Claude Code plugins
 ```
 ./claude-plugins.sh
 ```
+
+## Set up Codex
+
+```
+./codex.sh
+```
+
+Install Codex plugins
+
+```
+./codex-plugins.sh
+```

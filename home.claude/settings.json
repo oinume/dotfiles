@@ -129,5 +129,6 @@
   },
   "alwaysThinkingEnabled": true,
   "plansDirectory": ".mine/plans",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "model": "opus[1m]"
 }

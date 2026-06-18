@@ -15,13 +15,14 @@ git clone git@github.com:oinume/dotfiles.git
 brew bundle install  # Install Homebrew packages from Brewfile
 ```
 
-`setup.sh` creates symlinks from this repo to `$HOME` for all managed dotfiles (`.bash_profile`, `.gitconfig`, `.tmux.conf`, `.psqlrc`, `.editorconfig`, `.fzf.*`, `.tmuxinator/`, `.config/git/ignore`, `Brewfile`, VS Code configs, etc.). `claude.sh` separately symlinks Claude Code configs from `home.claude/` to `~/.claude/`.
+`setup.sh` creates symlinks from this repo to `$HOME` for all managed dotfiles (`.bash_profile`, `.gitconfig`, `.tmux.conf`, `.psqlrc`, `.editorconfig`, `.fzf.*`, `.tmuxinator/`, `.config/git/ignore`, `Brewfile`, VS Code configs, etc.). `claude.sh` separately symlinks Claude Code configs from `home.claude/` to `~/.claude/`, and `claude-plugins.sh` installs Claude Code marketplaces and plugins.
 
 ## Key Files
 
 - **`.bash_profile`** — Main shell config. Initializes Homebrew, fzf, mise, direnv, Go, GCloud SDK, pnpm, and bash-powerline prompt. Uses `__cached_eval` to cache slow `eval "$(cmd)"` calls for faster startup. Contains custom fzf functions (`fbr`, `fshow`, `fco`, `fco_preview`, `fghpr`). Supports startup profiling via `BASH_PROFILE_PROFILING=1`. Note: rbenv, NVM, and asdf are currently commented out.
 - **`setup.sh`** — Installation script that symlinks dotfiles to `$HOME`.
 - **`claude.sh`** — Symlinks Claude Code configs from `home.claude/` to `~/.claude/`.
+- **`claude-plugins.sh`** — Installs Claude Code marketplaces and plugins via the `claude` CLI.
 - **`codex.sh`** — Symlinks Codex configs from `home.codex/` to `~/.codex/`.
 - **`Brewfile`** — Homebrew dependencies (formulae, casks, VS Code extensions).
 - **`macos.sh`** — macOS system defaults (Finder, keyboard, Dock preferences).
@@ -45,7 +46,7 @@ brew bundle install  # Install Homebrew packages from Brewfile
 - Tmuxinator project configs go in `.tmuxinator/`. Work-specific configs (`.tmuxinator/work-*.yml`) are gitignored.
 - The `bash-it/` directory exists but bash-it is currently disabled in `.bash_profile`.
 - When adding a new dotfile, add it to `setup.sh`'s symlink loop and place it in the repo root.
-- Claude Code configs go in `home.claude/` and are symlinked to `~/.claude/` by `claude.sh`.
+- Claude Code configs go in `home.claude/` and are symlinked to `~/.claude/` by `claude.sh`. Marketplaces and plugins are installed separately by `claude-plugins.sh`.
 - Codex configs go in `home.codex/` and are symlinked to `~/.codex/` by `codex.sh`.
 - Git commits are signed with SSH keys via 1Password.
 - Use `__cached_eval` in `.bash_profile` for slow `eval "$(cmd)"` calls. It caches command output in `~/.cache/bash_startup/` and invalidates when the binary's mtime changes.

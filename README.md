@@ -8,8 +8,20 @@ $ cd dotfiles
 $ ./setup.sh
 ```
 
-## Install applications with homebrew
+## Install macOS applications with homebrew
 
 ```bash
 brew bundle install
+```
+
+## Set up Claude Code
+
+```
+./claude.sh
+```
+
+Install Claude Code plugins
+
+```
+./claude-plugins.sh
 ```

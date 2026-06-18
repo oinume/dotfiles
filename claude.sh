@@ -45,6 +45,8 @@ plugins="
 codex@openai-codex
 gopls-lsp@claude-plugins-official
 playwright@claude-plugins-official
+skill-creator@claude-plugins-official
+superpowers@claude-plugins-official
 "
 existing_plugins=$(claude plugin list 2>/dev/null || true)
 printf '%s\n' "$plugins" | while read -r plugin; do

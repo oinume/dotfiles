@@ -9,7 +9,7 @@ if [ ! -d "$cwd" ]; then
     exit 1
 fi
 
-cmux new-workspace \
+cmux workspace create \
     --name blog \
     --cwd "$cwd" \
     --focus true

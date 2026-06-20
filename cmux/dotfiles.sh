@@ -9,7 +9,7 @@ if [ ! -d "$cwd" ]; then
     exit 1
 fi
 
-cmux new-workspace \
+cmux workspace create \
     --name dotfiles \
     --cwd "$cwd" \
     --layout '{"pane":{"surfaces":[{"type":"terminal"},{"type":"terminal","focus":true}]}}' \

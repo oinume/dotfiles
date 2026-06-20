@@ -40,11 +40,17 @@ Install Codex plugins
 
 ## Agent skills
 
-Installing agent skills with `gh skill install <repo> <skill>`
+Installing agent skills with `gh skill install <repo> <skill>`.
 
-Following skills are installed in this repo.
+Example
+```
+gh skill install vercel-labs/agent-skills react-best-practices --agent codex --scope user
+gh skill install vercel-labs/agent-skills react-best-practices --agent claude-code --scope user
+```
 
-```
-gh skill install vercel-labs/agent-skills react-best-practices
-gh skill install anthropics/skills frontend-design
-```
+Following skills are installed as user scope.
+
+- anthropics/skills frontend-design
+- vercel-labes/agent-skills react-best-practices
+- vercel-labs/agent-skills react-native-skills
+- vercel-labs/agent-skills react-view-transitions

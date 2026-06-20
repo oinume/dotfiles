@@ -1,11 +1,11 @@
 ---
 name: install-agent-skills
-description: Install a named skill from a GitHub repository for both Codex and Claude Code at user scope. Use when the user provides or wants to provide a repository and skill to install for both agents.
+description: Install a named skill from a GitHub repository into this dotfiles repository for both Codex and Claude Code. Use when the user provides or wants to provide a repository and skill to install for both agents.
 ---
 
 # Install Agent Skills
 
-Install one skill from a GitHub repository for both Codex and Claude Code.
+Install one skill from a GitHub repository into the managed skill directories for both Codex and Claude Code.
 
 ## Inputs
 
@@ -18,14 +18,14 @@ If either value is missing and cannot be inferred from the conversation, ask the
 
 ## Installation
 
-Run these commands separately so each agent receives the skill at user scope:
+Run these commands separately from the dotfiles repository root so each agent receives the skill in its managed directory:
 
 ```bash
-gh skill install <repo> <skill> --agent codex --scope user
-gh skill install <repo> <skill> --agent claude-code --scope user
+gh skill install <repo> <skill> --dir home.codex/skills
+gh skill install <repo> <skill> --dir home.claude/skills
 ```
 
-Replace `<repo>` and `<skill>` with the resolved input values. Preserve a version suffix or exact path when the user supplied one. Do not add `--force`, `--pin`, `--all`, or other options unless the user requests that behavior.
+Replace `<repo>` and `<skill>` with the resolved input values. Preserve a version suffix or exact path when the user supplied one. `--dir` overrides `--agent` and `--scope`, so do not add either of those options. Do not add `--force`, `--pin`, `--all`, or other options unless the user requests that behavior.
 
 If the first command fails, diagnose and report the failure before deciding whether the second command can still run. Never report success for an agent whose command failed.
 

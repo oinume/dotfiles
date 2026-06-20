@@ -37,3 +37,14 @@ Install Codex plugins
 ```
 ./codex-plugins.sh
 ```
+
+## Agent skills
+
+Installing agent skills with `gh skill install <repo> <skill>`
+
+Following skills are installed in this repo.
+
+```
+gh skill install vercel-labs/agent-skills react-best-practices
+gh skill install anthropics/skills frontend-design
+```

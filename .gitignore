@@ -1,3 +1,5 @@
 .DS_Store
+cmux/work-*.sh
 .tmuxinator/work-*.yml
 .claude/settings.local.json
+home.codex/skills/.system/

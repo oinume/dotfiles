@@ -1,9 +1,9 @@
 ---
-name: install-agent-skills
+name: install-agent-skill
 description: Install a named skill from a GitHub repository into this dotfiles repository for both Codex and Claude Code. Use when the user provides or wants to provide a repository and skill to install for both agents.
 ---
 
-# Install Agent Skills
+# Install Agent Skill
 
 Install one skill from a GitHub repository into the managed skill directories for both Codex and Claude Code.
 

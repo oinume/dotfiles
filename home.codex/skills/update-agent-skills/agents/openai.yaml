@@ -1,0 +1,4 @@
+interface:
+  display_name: "Update Agent Skills"
+  short_description: "Update repository-managed skills with GitHub CLI"
+  default_prompt: "Use $update-agent-skills to update the GitHub-sourced skills managed in this repository."

@@ -51,6 +51,7 @@ gh skill install vercel-labs/agent-skills react-best-practices --agent claude-co
 Following skills are installed as user scope.
 
 - anthropics/skills frontend-design
+- microsoft/playwright-cli playwright-cli
 - vercel-labes/agent-skills react-best-practices
 - vercel-labs/agent-skills react-native-skills
 - vercel-labs/agent-skills react-view-transitions

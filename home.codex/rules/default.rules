@@ -1,5 +1,4 @@
 prefix_rule(pattern=["curl", "-L", "--silent", "--show-error"], decision="allow")
-prefix_rule(pattern=["git", "restore", "--source"], decision="allow")
 prefix_rule(pattern=["git", "add"], decision="allow")
 prefix_rule(pattern=["git", "commit"], decision="allow")
 prefix_rule(pattern=["git", "switch", "-c"], decision="allow")
@@ -12,7 +11,6 @@ prefix_rule(pattern=["git", "restore", "--staged", "native/package.json", "nativ
 prefix_rule(pattern=["git", "status", "-sb"], decision="allow")
 prefix_rule(pattern=["git", "diff", "--binary", "--output=/tmp/update-gluestack-ui-v3.patch", "--", "native/package.json", "native/package-lock.json"], decision="allow")
 prefix_rule(pattern=["git", "stash", "push", "-m", "codex-temp-pr861-rebase", "--", "../../go.work.sum"], decision="allow")
-prefix_rule(pattern=["git", "rebase"], decision="allow")
 prefix_rule(pattern=["git", "stash", "push", "-m", "codex-temp-main-pull", "--", "../../go.work.sum"], decision="allow")
 prefix_rule(pattern=["docker", "compose"], decision="allow")
 prefix_rule(pattern=["git", "diff", "--cached", "--stat"], decision="allow")

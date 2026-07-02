@@ -1,0 +1,99 @@
+# Allow routine Git work without an approval prompt. More restrictive rules below
+# take precedence over these allow rules.
+prefix_rule(
+    pattern = [
+        "git",
+        [
+            "add",
+            "annotate",
+            "blame",
+            "cat-file",
+            "commit",
+            "describe",
+            "diff",
+            "fetch",
+            "for-each-ref",
+            "grep",
+            "log",
+            "ls-files",
+            "ls-remote",
+            "ls-tree",
+            "merge-base",
+            "name-rev",
+            "pull",
+            "push",
+            "remote",
+            "rev-list",
+            "rev-parse",
+            "shortlog",
+            "show",
+            "status",
+        ],
+    ],
+    decision = "allow",
+    justification = "Routine Git commands are allowed without approval",
+    match = [
+        "git status --short",
+        "git diff --cached",
+        "git add README.md",
+        "git commit -m update",
+        "git fetch origin",
+        "git pull --ff-only",
+        "git push origin feature/example",
+    ],
+    not_match = [
+        "git reset --hard HEAD",
+        "git rebase main",
+        "git clean -fd",
+    ],
+)
+
+# Keep commands that can discard work or rewrite history behind an approval.
+prefix_rule(
+    pattern = [
+        "git",
+        [
+            "checkout",
+            "clean",
+            "rebase",
+            "reset",
+            "restore",
+            "rm",
+        ],
+    ],
+    decision = "prompt",
+    justification = "This Git command can discard work or rewrite history",
+    match = [
+        "git checkout -- README.md",
+        "git clean -fd",
+        "git rebase main",
+        "git reset --hard HEAD",
+        "git restore README.md",
+        "git rm README.md",
+    ],
+    not_match = [
+        "git status --short",
+        "git add README.md",
+    ],
+)
+
+# Common history-rewriting forms of otherwise routine commands.
+prefix_rule(
+    pattern = ["git", "commit", "--amend"],
+    decision = "prompt",
+    justification = "Amending a commit rewrites history",
+    match = ["git commit --amend", "git commit --amend --no-edit"],
+    not_match = ["git commit -m update"],
+)
+
+prefix_rule(
+    pattern = ["git", "push", ["--force", "-f", "--force-with-lease"]],
+    decision = "prompt",
+    justification = "Force-pushing can overwrite remote history",
+    match = [
+        "git push --force origin feature/example",
+        "git push -f origin feature/example",
+        "git push --force-with-lease origin feature/example",
+    ],
+    not_match = ["git push origin feature/example"],
+)

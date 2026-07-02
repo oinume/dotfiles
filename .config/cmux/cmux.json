@@ -22,7 +22,7 @@
   //     "sendAnonymousTelemetry" : true,
   //     "openMarkdownInCmuxViewer" : false,
   //     "focusPaneOnFirstClick" : false,
-  //     "workspaceInheritWorkingDirectory" : true,
+       "workspaceInheritWorkingDirectory" : true,
   //     "iMessageMode" : false,
   //     "commandPaletteSearchesAllSurfaces" : false,
        "warnBeforeClosingTabXButton" : false,

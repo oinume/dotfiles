@@ -1,0 +1,15 @@
+onboarding = false
+
+[terminal]
+shell_mode = "auto"
+new_cwd = "follow"
+
+[keys]
+prefix = "ctrl+t"
+
+[theme]
+name = "terminal"
+
+[ui]
+confirm_close = false
+prompt_new_tab_name = false

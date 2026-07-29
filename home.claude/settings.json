@@ -11,6 +11,7 @@
       "Bash(mkdir *)",
       "Bash(touch *)",
       "Bash(ls *)",
+      "Bash(lsof *)",
       "Bash(tree *)",
       "Bash(cd *)",
       "Bash(cp *)",

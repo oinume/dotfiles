@@ -47,4 +47,5 @@
     "workbench.tree.indent": 20,
     "extensions.ignoreRecommendations": true,
     "explorer.confirmDelete": false,
+    "update.showReleaseNotes": false
 }

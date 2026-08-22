@@ -133,5 +133,7 @@
   "alwaysThinkingEnabled": true,
   "effortLevel": "medium",
   "plansDirectory": ".mine/plans",
+  "tui": "fullscreen",
+  "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true
 }

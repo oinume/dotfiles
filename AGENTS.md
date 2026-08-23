@@ -31,7 +31,7 @@ brew bundle install  # Install Homebrew packages from Brewfile
 - **`.tmux.conf`** — Tmux with `Ctrl-T` prefix, vi copy-mode, mouse support, status bar at top.
 - **`bash-powerline.sh`** — Custom bash prompt with git branch display.
 - **`vscode/`** — VS Code settings, keybindings, and tasks (Go with gopls/gofumpt).
-- **`home.claude/`** — Claude Code configuration (`settings.json`, custom commands in `commands/`).
+- **`home.claude/`** — Claude Code configuration (`settings.json`, custom commands in `commands/`, custom skills in `skills/`).
 - **`home.codex/`** — Codex configuration and global instructions (`AGENTS.md`).
 - **`.github/workflows/`** — GitHub Actions workflows (e.g., `claude.yml`).
 - **`.config/git/ignore`** — Global git ignore patterns.

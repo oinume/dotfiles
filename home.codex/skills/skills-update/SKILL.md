@@ -1,5 +1,5 @@
 ---
-name: update-agent-skills
+name: skills-update
 description: Update GitHub-sourced agent skills tracked in this dotfiles repository by using `gh skill update`. Use when the user asks to refresh, upgrade, or check for updates to the skills under `home.codex/skills` and `home.claude/skills`.
 ---
 

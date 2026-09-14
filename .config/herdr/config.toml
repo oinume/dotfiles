@@ -3,6 +3,7 @@ onboarding = false
 [terminal]
 shell_mode = "auto"
 new_cwd = "follow"
+default_shell = "/opt/homebrew/bin/bash"
 
 [keys]
 prefix = "ctrl+t"

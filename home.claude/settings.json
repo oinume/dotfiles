@@ -90,7 +90,7 @@
       "Bash(chmod *)",
       "Bash(wget *)",
       "Bash(curl https://*)",
-      "Bash(curl * https://*)"
+      "Bash(curl * https://*)",
       "Bash(git checkout *)",
       "Bash(git merge *)",
       "Bash(git push -f*)",

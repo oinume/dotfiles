@@ -15,7 +15,7 @@
 SCRIPT='exit 0 if STDIN.read =~ /[\p{Hiragana}\p{Katakana}\p{Han}]/; exit 1'
 INPUT=`pbpaste`
 
-llm prompt -m gpt-5-mini -s "あなたは優秀な翻訳家です。次の文章を、日本語の場合は英語に、英語の場合は日本語に翻訳してください。なお、文脈を完全に維持したまま、翻訳結果のテキストのみを出力し、それ以外の前置きや説明、注釈などは一切含めないでください。" "$INPUT"
+llm prompt -m gpt-6-luna -s "あなたは優秀な翻訳家です。次の文章を、日本語の場合は英語に、英語の場合は日本語に翻訳してください。なお、文脈を完全に維持したまま、翻訳結果のテキストのみを出力し、それ以外の前置きや説明、注釈などは一切含めないでください。" "$INPUT"
 
 # if pbpaste | ruby -e $SCRIPT; then
 #   # JA -> EN

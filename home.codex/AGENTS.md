@@ -1,5 +1,9 @@
 # Global Codex Instructions
 
+## Git Commands
+
+- Use `git switch` instead of `git checkout` when switching branches.
+
 ## Go Commands
 
 - In Codex sandboxed sessions, run Go tests and Go build-related commands with a writable build cache under `/tmp`, because the default Go build cache may be outside the writable sandbox.

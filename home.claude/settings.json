@@ -96,7 +96,7 @@
       "Bash(git push -f*)",
       "Bash(git rebase *)"
     ],
-    "defaultMode": "plan"
+    "defaultMode": "auto"
   },
   "hooks": {
     "Stop": [

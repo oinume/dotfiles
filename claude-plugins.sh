@@ -30,7 +30,6 @@ done
 plugins="
 codex@openai-codex
 gopls-lsp@claude-plugins-official
-playwright@claude-plugins-official
 skill-creator@claude-plugins-official
 superpowers@claude-plugins-official
 "

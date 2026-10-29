@@ -6,6 +6,25 @@
   },
   "permissions": {
     "allow": [
+      "Bash(aws logs *)",
+      "Bash(aws cloudwatch *)",
+      "Bash(aws ecs describe-*)",
+      "Bash(aws ecs list-*)",
+      "Bash(aws sqs get-queue-attributes *)",
+      "Bash(aws ec2 describe-*)",
+      "Bash(aws vpc-lattice get-*)",
+      "Bash(aws vpc-lattice list-*)",
+      "Bash(aws cloudtrail lookup-events *)",
+      "Bash(aws secretsmanager describe-secret *)",
+      "Bash(aws secretsmanager list-secrets *)",
+      "Bash(aws sts get-caller-identity *)",
+      "Bash(aws configure list-profiles *)",
+      "Bash(aws configure list *)",
+      "Bash(aws configure get *)",
+      "Bash(aws --version)",
+      "Bash(aws scheduler get-*)",
+      "Bash(aws scheduler list-*)",
+      "Bash(aws cloudformation describe-*)",
       "Bash(codex *)",
       "Bash(lcodex *)",
       "Bash(curl http://localhost*)",
@@ -147,10 +166,21 @@
       }
     }
   },
+  "sandbox": {
+    "excludedCommands": [
+      "aws *"
+    ]
+  },
   "alwaysThinkingEnabled": true,
   "effortLevel": "medium",
   "modelSettings": {
     "claude-fable-5-1": {
+      "effortLevel": "high"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    },
+    "claude-sonnet-5-5": {
       "effortLevel": "high"
     }
   },
